@@ -16,7 +16,7 @@ const LandingPage = () => {
           <i class="google icon" /> Sign-in with Google
         </a>
       </div>
-      <div className="ui stackable center aligned two column grid">
+      <div className="ui stackable center aligned two column grid landingMessage">
         <div className="column">
           <div className="message">
             <h3>Master your day, simplify your life</h3>
@@ -42,11 +42,7 @@ const LandingPage = () => {
         </div>
       </div>
       <div className="bottom-wave">
-        <h4>David Liu 2019</h4>
-        <h4>example@provider.com</h4>
-        <h4>
-          <a href="https://github.com/qwertyuiop1993">https://github.com/qwertyuiop1993</a>
-        </h4>
+        <h4 className="signature">David Liu 2018</h4>
       </div>
     </div>
   );

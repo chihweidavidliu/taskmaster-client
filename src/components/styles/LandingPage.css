@@ -1,48 +1,6 @@
 /* RESPONSIVE BEHAVIOUR */
 
 /* small screen */
-@media only screen and (max-width: 600px) {
-  .navbar {
-    flex-direction: column;
-  }
-
-  .navbar a {
-    margin-top: 20px;
-  }
-
-  ul {
-    font-size: 24px !important;
-  }
-
-  .message {
-    margin: 10px !important;
-  }
-
-  .interface-screenshot {
-    margin-top: 0px !important;
-    height: 100px !important;
-  }
-}
-
-/* medium screen */
-@media only screen and (max-width: 900px) {
-  .message {
-    margin: 10px 10px 10px 0px !important;
-
-  }
-
-  ul {
-    font-size: 24px !important;
-  }
-
-  .interface-screenshot {
-    margin-top: 0px !important;
-    height: 300px !important;
-  }
-
-}
-
-/* NORMAL BEHAVIOUR */
 
 .landingPage h1 {
   font-family: Pacifico, sans-serif;
@@ -55,13 +13,14 @@
   align-items: center;
   padding: 25px;
   color: #084541;
+  flex-direction: column;
 }
 
 .navbar a {
   color: #084541 !important;
   font-size: 18px !important;
+  margin-top: 20px;
 }
-
 
 h3 {
   font-family: Roboto, sans-serif;
@@ -70,37 +29,41 @@ h3 {
   color: #686868;
 }
 
-
-
-ul {
+.message ul {
+  font-size: 24px;
   text-align: left;
   list-style-type: none;
   font-family: Roboto;
   font-style: normal;
   font-weight: 200;
   line-height: normal;
-  font-size: 32px;
   color: #949494;
 }
 
 .message {
-  margin: 50px;
+  margin: 3vw;
 }
 
 .interface-screenshot {
-  margin-top: 45px;
-  height: 400px;
+  margin-top: 0px;
+  height: 60vh;
   background-image: url("../../images/interface.png");
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .bottom-wave {
+  clip-path: polygon(
+    0 2vw,
+    100% 0,
+    100% 100%,
+    0 calc(100%)
+  );
   display: flex;
-  align-items: center;
+  align-items:center;
   justify-content: center;
   flex-direction: column;
-  margin-top: 50px;
-  height: 40vh;
+  margin-top: 2vh;
+  height: 20vh;
   background: #05A89E;
 }
 
@@ -116,10 +79,75 @@ ul {
   margin: 0;
 }
 
-.landingPage {
-  height: 100vh;
-}
 
 .beautiful {
   font-family: Courgette, cursive;
+}
+
+.signature {
+  position: fixed;
+  bottom: 2px;
+  right: 2px;
+}
+
+/* medium screen */
+@media only screen and (min-width: 780px) {
+  .navbar {
+    height: 15vh !important;
+    flex-direction: row;
+  }
+  .message {
+    margin: 10px 10px 10px 0px !important;
+  }
+
+  .interface-screenshot {
+    margin-top: 0px !important;
+    height: 400px !important;
+  }
+
+  .landingMessage {
+    margin-top: 5vh !important;
+    height: 60vh !important;
+  }
+
+  .bottom-wave {
+    margin-top: 8vh !important;
+    height: 15vh !important;
+  }
+}
+
+/* LARGE SCREENS */
+@media only screen and (min-width: 900px) {
+
+  .landingPage {
+    max-width: 100vw;
+  }
+
+  .navbar {
+    flex-direction: row !important;
+  }
+
+  .landingMessage {
+    height: 70vh !important;
+  }
+
+  .message ul {
+    font-size: 30px !important;
+  }
+
+  .message {
+    margin: 40px 40px 40px 0px !important;
+  }
+
+  .interface-screenshot {
+    margin-top: 10px !important;
+    height: 400px;
+    background-image: url("../../images/interface.png");
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  }
+
+  .bottom-wave {
+    margin-top: 2vh !important;
+    height: 10vh !important;
+  }
 }
