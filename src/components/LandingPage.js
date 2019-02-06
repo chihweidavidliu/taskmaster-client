@@ -13,7 +13,7 @@ const LandingPage = () => {
           </Link>
         </div>
         <a href="/auth/google">
-          <i class="google icon" /> Sign-in with Google
+          <i className="google icon" /> Sign-in with Google
         </a>
       </div>
       <div className="ui stackable center aligned two column grid landingMessage">
