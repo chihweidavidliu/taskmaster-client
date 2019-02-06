@@ -27,6 +27,10 @@ describe("the navbar", () => {
     expect(wrapped.find(Link).length).toEqual(1);
     expect(wrapped.find(Link).find("h1").length).toEqual(1);
   });
+
+  it("should contain an anchor tag for login", () => {
+    expect(wrapped.find(".navbar").children("a").length).toEqual(1);
+  })
 });
 
 describe("the landingMessage", () => {
