@@ -1,11 +1,12 @@
 import { FETCH_TODOS, ADD_TODO, UPDATE_ORDER, DELETE_TODO, EDIT_TODO_TEXT } from "../actions/types";
+import axios from "axios";
 
 export function arrayMove(arr, previousIndex, newIndex) {
   // make copy of original array
   const array = arr.slice(0);
 
   // if the newIndex is greater than array length - fill in the gap between what is in the array
-  // and the newIndex of the element in question with underfined
+  // and the newIndex of the element in question with undefined
   if (newIndex >= array.length) {
     let k = newIndex - array.length;
     while (k-- + 1) {
@@ -22,16 +23,27 @@ export function arrayMove(arr, previousIndex, newIndex) {
 export default (state = [], action) => {
   switch(action.type) {
     case FETCH_TODOS:
-      return action.payload; // returns an array of todos sent by the server
+      const sortedTodos = action.payload.sort((a, b) => a.indexInList - b.indexInList);
+      return sortedTodos; // returns an array of todos sent by the server
     case ADD_TODO:
       const todo = action.payload;
-      return [ todo, ...state ];
+      const updatedState = [ todo, ...state ];
+      updatedState.forEach(async (todo, index) => {
+        todo.indexInList = index;
+        await axios.patch(`/api/todos/${todo._id}`, { indexInList: index });
+      })
+      return updatedState;
     case UPDATE_ORDER:
       const stateCopy = [ ...state ];
       const { oldIndex, newIndex } = action.payload;
-
       const newState = arrayMove(stateCopy, oldIndex, newIndex);
-      localStorage.setItem("state", JSON.stringify(newState)); // persist state of todos in local storage
+
+      // update index of each todo item
+      newState.forEach( async (todo, index) => {
+        todo.indexInList = index;
+        await axios.patch(`/api/todos/${todo._id}`, { indexInList: index });
+      });
+
       return newState;
     case DELETE_TODO:
       const deletedTodoId = action.payload._id;

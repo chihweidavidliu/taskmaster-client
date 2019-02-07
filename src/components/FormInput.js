@@ -23,6 +23,7 @@ class FormInput extends React.Component {
     const todoText = formValues.todoInput; // get todo text
     this.props.addTodo({text: todoText, category: this.props.category, _creator: this.props.auth._id }); // dispatch action creator
     this.props.reset(); // reset value of input
+    // action creator to update order in the database
   }
 
   render() {
