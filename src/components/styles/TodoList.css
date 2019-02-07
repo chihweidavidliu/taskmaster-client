@@ -29,8 +29,7 @@
 }
 
 #todoList {
-  margin-top: 5vh;
-  height: 70vh;
+  height: 67vh;
   overflow-y: scroll;
   overflow-x: hidden;
 }

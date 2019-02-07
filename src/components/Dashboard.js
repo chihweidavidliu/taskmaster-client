@@ -21,6 +21,7 @@ class Dashboard extends Component {
           <TodoContainer>
               <h3>{this.props.category}</h3>
               <FormInput />
+              <p id="instructions">Drag to reorder. Click text to edit</p>
               <TodoList />
           </TodoContainer>
         </div>

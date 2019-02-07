@@ -12,3 +12,9 @@
   font-size: 36px;
   color: whitesmoke;
 }
+
+#instructions {
+  margin-top: 17px;
+  color: #084541;
+  text-align: center;
+}
