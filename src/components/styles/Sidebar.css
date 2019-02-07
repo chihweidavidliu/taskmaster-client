@@ -1,0 +1,13 @@
+.sidebar-container {
+  height: 92vh;
+}
+
+#sidebar {
+  margin-left: 8px;
+  font-size: 17px;
+}
+
+#project-menu {
+  margin-top: 8px;
+  font-size: 17px;
+}

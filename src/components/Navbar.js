@@ -9,7 +9,6 @@ const Navbar = () => {
       <div className="item">
         <Link to="/dashboard"><h1>TaskMaster</h1></Link>
       </div>
-      <a className="item right" href="/api/logout">Sign-out</a>
     </div>
   )
 }

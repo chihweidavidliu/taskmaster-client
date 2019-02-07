@@ -7,7 +7,6 @@ import * as actions from "../actions";
 import LandingPage from "./LandingPage";
 import Dashboard from "./Dashboard";
 
-
 class App extends Component {
   async componentDidMount() {
     await this.props.fetchUser();

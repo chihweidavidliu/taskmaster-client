@@ -1,0 +1,14 @@
+.todoContainer {
+    background-color: teal;
+}
+
+.container {
+  width: 60vw !important;
+}
+
+.container h3 {
+  font-family: Roboto, sans-serif;
+  font-weight: 300;
+  font-size: 36px;
+  color: whitesmoke;
+}

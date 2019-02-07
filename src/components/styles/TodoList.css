@@ -1,0 +1,73 @@
+::-webkit-scrollbar {
+    display: none;
+}
+
+.deleteButton {
+  color: #084541;
+  transition: all 0.5s;
+}
+.deleteButton:hover {
+  transform: scale(1.2);
+  cursor: pointer;
+}
+
+.edit {
+  transition: all 0.5s;
+}
+.edit:hover {
+  transform: scale(1.07);
+}
+
+.edit:focus {
+  outline: 0;
+}
+
+
+/* Need to put transition on todo header to allow contentEditable functionality to not interfere with sortable funcitonality*/
+.header {
+  transition: all 0.5s;
+}
+
+#todoList {
+  margin-top: 5vh;
+  height: 70vh;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+.todo-item {
+  background-color: whitesmoke;
+  color: #474747;
+  margin: 8px;
+  font-size: 17px;
+  border-radius: 5px !important;
+  display: flex;
+  justify-content: space-between;
+  padding: 7px;
+}
+
+.todo-item:hover {
+  transform: scale(1.01);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.19), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.todo-item:focus {
+  outline: 0;
+}
+
+.triangle {
+  float: left;
+}
+
+.header {
+  float: left;
+}
+.list:focus {
+  outline: 0;
+}
+
+.todo-item button {
+  border: none;
+  background: none;
+  color: white;
+}

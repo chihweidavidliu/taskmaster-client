@@ -7,3 +7,7 @@
 .menu a {
   color: #084541;
 }
+.ui.menu {
+  border-radius: 0;
+  height: 8vh;
+}
