@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Field, reduxForm } from "redux-form"
 import { Menu, Input } from "semantic-ui-react";
+
+import "./styles/Projects.css";
 import CategoryLink from "./CategoryLink";
 import * as actions from "../actions";
 
@@ -10,7 +12,10 @@ class Projects extends Component {
     if(this.props.auth) {
       const { projects } = this.props.auth;
       return projects.map(project => {
-        return <CategoryLink name={project} />
+        return (
+          <CategoryLink name={project}>
+          </CategoryLink>
+        )
       })
     }
   }
@@ -23,7 +28,7 @@ class Projects extends Component {
         autoComplete="off"
         className='icon'
         icon='plus'
-        placeholder='Add...'
+        placeholder='Add project...'
       />
     )
   }

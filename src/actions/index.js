@@ -1,5 +1,5 @@
 import axios from "axios";
-import { ADD_PROJECT, FETCH_TODOS, SET_CATEGORY, FETCH_USER, ADD_TODO, UPDATE_ORDER, DELETE_TODO, EDIT_TODO_TEXT } from "./types";
+import { DELETE_PROJECT, ADD_PROJECT, FETCH_TODOS, SET_CATEGORY, FETCH_USER, ADD_TODO, UPDATE_ORDER, DELETE_TODO, EDIT_TODO_TEXT } from "./types";
 
 export const fetchUser = () => async (dispatch, getState) => {
   try {
@@ -18,9 +18,15 @@ export const setCategory = (category) => {
   }
 };
 
+// Project actions
 export const addProject = (project) => async (dispatch) => {
   const response = await axios.patch("/api/current_user/addProject", { project: project });
   dispatch({ type: ADD_PROJECT, payload: response.data });
+};
+
+export const deleteProject = (project) => async (dispatch) => {
+  const response = await axios.delete(`/api/current_user/deleteProject/${project}`);
+  dispatch({ type: DELETE_PROJECT, payload: response.data });
 };
 
 // TODO actions

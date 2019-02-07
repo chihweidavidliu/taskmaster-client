@@ -1,0 +1,25 @@
+.project .deleteIcon {
+  color: lightgrey;
+  transition: all 0.3s;
+  transform: scale(0.9);
+}
+
+.project .deleteIcon:hover {
+  transform: scale(1.2);
+  cursor: pointer;
+  color: darkgray;
+}
+
+.project .deleteButton:focus {
+  outline: none;
+}
+
+.project .deleteButton {
+  border: none;
+  background-color: whitesmoke;
+}
+
+.project-contents {
+  display: flex;
+  justify-content: space-between;
+}

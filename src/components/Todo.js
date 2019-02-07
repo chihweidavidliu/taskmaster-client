@@ -15,7 +15,7 @@ const Todo = SortableElement(props => {
         <TodoText id={_id} todo={text} />
       </div>
       <div>
-        <DeleteButton id={_id}/>
+        <DeleteButton id={_id} target={"todo"} />
       </div>
     </div>
   );

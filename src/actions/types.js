@@ -9,3 +9,4 @@ export const TRIGGER_SCALE = "TRIGGER_SCALE";
 export const REVERSE_SCALE = "REVERSE_SCALE";
 export const SET_CATEGORY = "SET_CATEGORY;"
 export const ADD_PROJECT = "ADD_PROJECT";
+export const DELETE_PROJECT = "DELETE_PROJECT";

@@ -2,11 +2,11 @@
     display: none;
 }
 
-.deleteButton {
+.todo-item .deleteIcon {
   color: #084541;
   transition: all 0.3s;
 }
-.deleteButton:hover {
+.todo-item .deleteIcon:hover {
   transform: scale(1.3);
   cursor: pointer;
 }
