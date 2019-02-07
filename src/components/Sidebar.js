@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import * as actions from "../actions";
 import "./styles/Sidebar.css";
 import CategoryLink from "./CategoryLink";
+import Projects from "./Projects";
 
 class SideBar extends Component {
   state = {};
@@ -18,16 +19,7 @@ class SideBar extends Component {
       <div className="three wide column">
         <Menu fluid secondary vertical id="sidebar">
           <CategoryLink name="Inbox" />
-          <Menu.Item>
-            Projects
-            <Menu.Menu id="project-menu">
-              <CategoryLink name="Misc" />
-              <CategoryLink name="Work" />
-              <Menu.Item>
-                <Input size="mini" className='icon' icon='plus' placeholder='Add...' />
-              </Menu.Item>
-            </Menu.Menu>
-          </Menu.Item>
+          <Projects />
           <Dropdown item text="Filter Posts">
             <Dropdown.Menu>
               <Dropdown.Header icon="folder" content="Project" />

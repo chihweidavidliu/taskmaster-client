@@ -42,4 +42,4 @@ const mapStateToProps = (state) => {
   }
 };
 const wrapped = connect(mapStateToProps, { addTodo: addTodo }) (FormInput);
-export default reduxForm({ form: "FormInput" }) (wrapped);
+export default reduxForm({ form: "todoForm" }) (wrapped);
