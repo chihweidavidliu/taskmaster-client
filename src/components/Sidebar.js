@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 
 import * as actions from "../actions";
 import "./styles/Sidebar.css";
+import CategoryLink from "./CategoryLink";
 
 class SideBar extends Component {
   state = {};
@@ -16,28 +17,17 @@ class SideBar extends Component {
     return (
       <div className="three wide column">
         <Menu fluid secondary vertical id="sidebar">
-          <Menu.Item name="Inbox" active={this.props.activeItem === "Inbox"} onClick={this.handleItemClick} />
+          <CategoryLink name="Inbox" />
           <Menu.Item>
             Projects
             <Menu.Menu id="project-menu">
-              <Menu.Item name='Misc' active={this.props.activeItem === 'Misc'} onClick={this.handleItemClick}>
-                Misc
-              </Menu.Item>
-              <Menu.Item name='Work' active={this.props.activeItem === 'Work'} onClick={this.handleItemClick}>
-                Work
-              </Menu.Item>
+              <CategoryLink name="Misc" />
+              <CategoryLink name="Work" />
               <Menu.Item>
                 <Input size="mini" className='icon' icon='plus' placeholder='Add...' />
               </Menu.Item>
             </Menu.Menu>
           </Menu.Item>
-          <Dropdown item text="Projects">
-            <Dropdown.Menu>
-              <Dropdown.Item>Misc</Dropdown.Item>
-              <Dropdown.Item>Work</Dropdown.Item>
-              <Dropdown.Item>Shopping</Dropdown.Item>
-            </Dropdown.Menu>
-          </Dropdown>
           <Dropdown item text="Filter Posts">
             <Dropdown.Menu>
               <Dropdown.Header icon="folder" content="Project" />
