@@ -1,13 +1,13 @@
 import React from "react";
 import { connect } from "react-redux";
 
-import { editTodo } from "../actions";
+import { editTodoText } from "../actions";
 
 class TodoText extends React.Component {
 
   handleBlur = (e) => {
     const newText = e.target.innerText;
-    this.props.editTodo(this.props.id, newText); // send new text to state onBlur
+    this.props.editTodoText(this.props.id, newText); // send new text to state onBlur
   }
 
   handleKeyPress = (e) => {
@@ -31,4 +31,4 @@ class TodoText extends React.Component {
   }
 }
 
-export default connect(null, { editTodo: editTodo }) (TodoText);
+export default connect(null, { editTodoText: editTodoText }) (TodoText);

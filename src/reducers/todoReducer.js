@@ -1,4 +1,4 @@
-import { FETCH_TODOS, ADD_TODO, UPDATE_ORDER, DELETE_TODO, CLEAR_ALL, EDIT_TODO } from "../actions/types";
+import { FETCH_TODOS, ADD_TODO, UPDATE_ORDER, DELETE_TODO, EDIT_TODO_TEXT } from "../actions/types";
 
 export function arrayMove(arr, previousIndex, newIndex) {
   // make copy of original array
@@ -25,7 +25,6 @@ export default (state = [], action) => {
       return action.payload; // returns an array of todos sent by the server
     case ADD_TODO:
       const todo = action.payload;
-      // localStorage.setItem("state", JSON.stringify([ todo, ...state ])); // persist state of todos in local storage
       return [ todo, ...state ];
     case UPDATE_ORDER:
       const stateCopy = [ ...state ];
@@ -35,25 +34,20 @@ export default (state = [], action) => {
       localStorage.setItem("state", JSON.stringify(newState)); // persist state of todos in local storage
       return newState;
     case DELETE_TODO:
-      console.log(action.payload);
       const deletedTodoId = action.payload._id;
       const filteredState = state.filter(todo => todo._id !== deletedTodoId);
       return filteredState;
-      case CLEAR_ALL:
-        localStorage.removeItem("state");
-        return [];
-      case EDIT_TODO:
-        const { idToEdit, newText } = action.payload;
+    case EDIT_TODO_TEXT:
+        const updatedTodo = action.payload;
         // make new state array, changing the todo text where appropriate
         const updatedTodos = state.map(todo => {
-          if(todo.id === idToEdit) {
-            todo.todo = newText;
+          if(todo._id === updatedTodo._id) {
+            todo.text = updatedTodo.text;
             return todo;
           } else {
             return todo;
           }
         });
-        localStorage.setItem("state", JSON.stringify(updatedTodos));
         return updatedTodos;
     default:
       return state;
