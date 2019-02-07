@@ -23,6 +23,9 @@ class Navbar extends Component {
         <div className="item">
           <p>Signed in as {this.renderUsername()}</p>
         </div>
+        <div className="item right">
+          <a href="/api/logout">Sign-out</a>
+        </div>
       </div>
     )
   }

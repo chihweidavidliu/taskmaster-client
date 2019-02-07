@@ -1,5 +1,4 @@
-import shortid from "shortid";
-import { ADD_TODO, UPDATE_ORDER, DELETE_TODO, CLEAR_ALL, EDIT_TODO } from "../actions/types";
+import { FETCH_TODOS, ADD_TODO, UPDATE_ORDER, DELETE_TODO, CLEAR_ALL, EDIT_TODO } from "../actions/types";
 
 export function arrayMove(arr, previousIndex, newIndex) {
   // make copy of original array
@@ -20,13 +19,13 @@ export function arrayMove(arr, previousIndex, newIndex) {
 }
 
 // define a function to save store to localStorage
-export default (state = JSON.parse(localStorage.getItem("state")) || [], action) => {
+export default (state = [], action) => {
   switch(action.type) {
+    case FETCH_TODOS:
+      return action.payload; // returns an array of todos sent by the server
     case ADD_TODO:
-      const id = shortid.generate();
-      const todo = { id: id, todo: action.payload };
-
-      localStorage.setItem("state", JSON.stringify([ todo, ...state ])); // persist state of todos in local storage
+      const todo = action.payload;
+      // localStorage.setItem("state", JSON.stringify([ todo, ...state ])); // persist state of todos in local storage
       return [ todo, ...state ];
     case UPDATE_ORDER:
       const stateCopy = [ ...state ];
@@ -36,9 +35,9 @@ export default (state = JSON.parse(localStorage.getItem("state")) || [], action)
       localStorage.setItem("state", JSON.stringify(newState)); // persist state of todos in local storage
       return newState;
     case DELETE_TODO:
-      const idToDelete = action.payload;
-      const filteredState = state.filter(todo => todo.id !== idToDelete);
-      localStorage.setItem("state", JSON.stringify(filteredState));
+      console.log(action.payload);
+      const deletedTodoId = action.payload._id;
+      const filteredState = state.filter(todo => todo._id !== deletedTodoId);
       return filteredState;
       case CLEAR_ALL:
         localStorage.removeItem("state");

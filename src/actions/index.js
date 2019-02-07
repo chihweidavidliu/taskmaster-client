@@ -1,5 +1,5 @@
 import axios from "axios";
-import { SET_CATEGORY, FETCH_USER, ADD_TODO, UPDATE_ORDER, DELETE_TODO, CLEAR_ALL, EDIT_TODO, TRIGGER_SCALE, REVERSE_SCALE } from "./types";
+import { FETCH_TODOS, SET_CATEGORY, FETCH_USER, ADD_TODO, UPDATE_ORDER, DELETE_TODO, CLEAR_ALL, EDIT_TODO, TRIGGER_SCALE, REVERSE_SCALE } from "./types";
 
 export const fetchUser = () => async (dispatch, getState) => {
   try {
@@ -12,11 +12,16 @@ export const fetchUser = () => async (dispatch, getState) => {
 
 // TODO actions
 
-export const addTodo = (todo) => {
-  return {
-    type: ADD_TODO,
-    payload: todo
-  };
+export const fetchTodos = (category) => async (dispatch) => {
+  const response = await axios.get(`/api/todos/filter/${category}`);
+  console.log(response)
+  const todos = response.data.todos;
+  dispatch({ type: FETCH_TODOS, payload: todos })
+}
+
+export const addTodo = (todo) => async (dispatch, getState) => {
+  const response = await axios.post("/api/todos", todo);
+  dispatch({ type: ADD_TODO, payload: response.data});
 };
 
 export const updateTodoOrder = (oldIndex, newIndex) => {
@@ -26,11 +31,9 @@ export const updateTodoOrder = (oldIndex, newIndex) => {
   };
 };
 
-export const deleteTodo = (id) => {
-  return {
-    type: DELETE_TODO,
-    payload: id,
-  };
+export const deleteTodo = (id) => async (dispatch) => {
+  const response = await axios.delete(`/api/todos/${id}`);
+  dispatch({ type: DELETE_TODO, payload: response.data.todo })
 };
 
 export const clearAll = () => {

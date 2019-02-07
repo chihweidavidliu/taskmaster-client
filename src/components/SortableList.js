@@ -8,7 +8,7 @@ const SortableList = SortableContainer((props) => {
   return (
     <div id="todoList">
       {props.todos.map((item, index) => { // get todos from store
-        return (<Todo todo={item} index={index} key={item.id} />);
+        return (<Todo todo={item} index={index} key={item._id} />);
       })}
     </div>
   );

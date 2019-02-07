@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import requireAuth from "../requireAuth";
 
-import * as actions from "../actions";
+import requireAuth from "../requireAuth";
 import Navbar from "./Navbar";
 import Sidebar from "./Sidebar";
 import TodoContainer from "./TodoContainer";
