@@ -30,7 +30,7 @@ describe("the navbar", () => {
 
   it("should contain an anchor tag for login", () => {
     expect(wrapped.find(".navbar").children("a").length).toEqual(1);
-  })
+  });
 });
 
 describe("the landingMessage", () => {
@@ -41,15 +41,15 @@ describe("the landingMessage", () => {
   it("should contain a ul and a h3", () => {
     expect(wrapped.find(".message").children("ul").length).toEqual(1);
     expect(wrapped.find(".message").children("h3").length).toEqual(1);
-  })
+  });
 
   it("should contain an image of the interface", () => {
     expect(wrapped.find(".interface-screenshot").length).toEqual(1);
-  })
+  });
 });
 
 describe("the bottom bar", () => {
   it("should contain an h4 with a signature", () => {
     expect(wrapped.find(".bottom-wave").children("h4").length).toEqual(1);
-  })
-})
+  });
+});
