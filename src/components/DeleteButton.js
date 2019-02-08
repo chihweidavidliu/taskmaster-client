@@ -19,7 +19,7 @@ class DeleteButton extends Component {
 
   render() {
     return (
-      <button aria-label="deleteTodo" title="delete" class="deleteButton">
+      <button aria-label="deleteTodo" title="delete" className="deleteButton">
         <i className="white close icon deleteIcon" onClick={this.handleClick} onTransitionEnd={this.handleTransitionEnd}></i>
       </button>
     );
