@@ -28,7 +28,7 @@ class FormInput extends React.Component {
 
   render() {
     return (
-      <form className="ui form error" onSubmit={this.props.handleSubmit(this.onSubmit)}>
+      <form id="todoForm" className="ui form error" onSubmit={this.props.handleSubmit(this.onSubmit)}>
         <Field name="todoInput" component={this.renderInput} />
       </form>
     );
