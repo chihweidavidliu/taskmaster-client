@@ -2,14 +2,10 @@ import React from "react";
 import moxios from "moxios";
 import { MemoryRouter } from "react-router-dom";
 import { mount } from "enzyme";
-import { Menu } from "semantic-ui-react";
-import { waitForElement } from 'enzyme-async-helpers';
 
 import Root from "../Root";
 import Dashboard from "../components/Dashboard";
-import CategoryLink from "../components/Dashboard";
 import Todo from "../components/Todo";
-import FormInput from "../components/FormInput";
 
 let wrapped;
 beforeEach(() => {
@@ -51,7 +47,7 @@ it("should display todos in state", () => {
   expect(wrapped.find(Todo).length).toEqual(1);
 });
 
-it("should, display a todo when FormInput is submitted", (done) => {
+it("should display a todo when FormInput is submitted", (done) => {
   // stub the request with moxios
   moxios.stubRequest("/api/todos", {
     status: 200,

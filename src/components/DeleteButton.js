@@ -18,9 +18,18 @@ class DeleteButton extends Component {
   }
 
   render() {
+    let iconType;
+    let title;
+    if(this.props.target === "todo") {
+      iconType = "check"
+      title = "Mark as done"
+    } else if(this.props.target === "project") {
+      iconType = "close"
+      title = "Delete"
+    }
     return (
-      <button aria-label="deleteTodo" title="delete" className="deleteButton">
-        <i className="white close icon deleteIcon" onClick={this.handleClick} onTransitionEnd={this.handleTransitionEnd}></i>
+      <button aria-label="deleteTodo" title={title} className="deleteButton">
+        <i className={`white ${iconType} icon deleteIcon`} onClick={this.handleClick} onTransitionEnd={this.handleTransitionEnd}></i>
       </button>
     );
   }

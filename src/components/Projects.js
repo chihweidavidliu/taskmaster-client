@@ -13,7 +13,7 @@ class Projects extends Component {
       const { projects } = this.props.auth;
       return projects.map(project => {
         return (
-          <CategoryLink name={project}>
+          <CategoryLink key={project} name={project}>
           </CategoryLink>
         )
       })
@@ -35,7 +35,6 @@ class Projects extends Component {
 
   onSubmit = (formValues) => {
     const projectName = formValues.addProject;
-    console.log(projectName);
     this.props.addProject(projectName);
     this.props.reset();
   }
