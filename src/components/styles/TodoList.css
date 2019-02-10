@@ -25,12 +25,6 @@
   outline: 0;
 }
 
-
-/* Need to put transition on todo header to allow contentEditable functionality to not interfere with sortable funcitonality*/
-.header {
-  transition: 0.5s;
-}
-
 #todoList {
   height: 67vh;
   overflow-y: scroll;
@@ -45,6 +39,7 @@
   border-radius: 5px !important;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   padding: 7px;
   transition: transform 0.1s;
 }
@@ -58,13 +53,35 @@
   outline: 0;
 }
 
-.triangle {
-  float: left;
+.todo-item .content {
+  display: flex;
 }
 
-.header {
-  float: left;
+/* Need to put transition on todo header to allow contentEditable functionality to not interfere with sortable funcitonality*/
+.todo-item .header {
+  transition: 0.5s;
+  max-width: 50vw;
 }
+
+@media only screen and (max-width: 767px) {
+  .todo-item .header {
+    max-width: 65vw;
+  }
+}
+
+.todo-tools {
+  display: flex;
+}
+
+.fa-grip-vertical {
+  cursor: move;
+  margin-right: 5px;
+}
+
+.deleteButton {
+  outline: none;
+}
+
 .list:focus {
   outline: 0;
 }

@@ -4,10 +4,16 @@ import { connect } from "react-redux";
 import { editTodoText } from "../actions";
 
 class TodoText extends React.Component {
+  state = { contentEditable: false }
+
+  handleDoubleClick = () => {
+    this.setState({ contentEditable: true })
+  }
 
   handleBlur = (e) => {
     const newText = e.target.innerText;
     this.props.editTodoText(this.props.id, newText); // send new text to state onBlur
+    this.setState({ contentEditable: false });
   }
 
   handleKeyPress = (e) => {
@@ -21,10 +27,11 @@ class TodoText extends React.Component {
     return (
       <div
         className="header"
-        contentEditable={true}
+        contentEditable={this.state.contentEditable}
         suppressContentEditableWarning={true}
         onBlur={this.handleBlur}
         onKeyPress={this.handleKeyPress}
+        onClick={this.handleDoubleClick}
       >
         {this.props.todo}
       </div>

@@ -24,6 +24,7 @@ class Projects extends Component {
     return(
       <Input
         {...formProps.input}
+        maxLength="20"
         size="mini"
         autoComplete="off"
         className='icon'

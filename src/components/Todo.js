@@ -14,8 +14,9 @@ const Todo = SortableElement(props => {
         <i className="white right triangle icon"></i>
         <TodoText id={_id} todo={text} />
       </div>
-      <div>
+      <div className="todo-tools">
         <DeleteButton id={_id} target={"todo"} />
+        <i className="fas fa-grip-vertical" aria-label="Drag to reorder" title="Drag to reorder"></i>
       </div>
     </div>
   );
