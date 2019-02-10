@@ -22,6 +22,7 @@ class TodoText extends React.Component {
       <div
         className="header"
         contentEditable={true}
+        suppressContentEditableWarning={true}
         onBlur={this.handleBlur}
         onKeyPress={this.handleKeyPress}
       >

@@ -27,7 +27,9 @@ class CategoryLink extends Component {
         className="project"
       >
         <div className="project-contents">
-          {this.props.name}
+          <div>
+            {this.props.name}
+          </div>
           {this.renderDelete()}
         </div>
       </Menu.Item>

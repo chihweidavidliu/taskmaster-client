@@ -25,10 +25,10 @@ class DeleteButton extends Component {
       title = "Mark as done"
     } else if(this.props.target === "project") {
       iconType = "close"
-      title = "Delete"
+      title = "Delete project"
     }
     return (
-      <button aria-label="deleteTodo" title={title} className="deleteButton">
+      <button aria-label={title} title={title} className="deleteButton">
         <i className={`white ${iconType} icon deleteIcon`} onClick={this.handleClick} onTransitionEnd={this.handleTransitionEnd}></i>
       </button>
     );

@@ -7,8 +7,9 @@ import Todo from "./Todo";
 const SortableList = SortableContainer((props) => {
   return (
     <div id="todoList">
-      {props.todos.map((item, index) => { // get todos from store
-        return (<Todo todo={item} index={index} key={item._id} />);
+      {props.todos.map((item, index) => {
+        // get todos from store
+        return <Todo todo={item} index={index} key={item._id} />;
       })}
     </div>
   );
@@ -20,4 +21,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps) (SortableList);
+export default connect(mapStateToProps)(SortableList);
