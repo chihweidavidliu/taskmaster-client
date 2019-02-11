@@ -69,6 +69,7 @@ class CategoryLink extends Component {
       >
         <div className="project-contents">
           {this.renderName()}
+          {this.props.numOfTodos}
           {this.renderDelete()}
         </div>
       </Menu.Item>
@@ -76,9 +77,10 @@ class CategoryLink extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, ownProps) => {
   return {
-    activeItem: state.category
+    activeItem: state.category,
+    numOfTodos: state.categoryCounts[ownProps.name]
   };
 };
 export default connect(

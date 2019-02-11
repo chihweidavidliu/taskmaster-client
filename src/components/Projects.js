@@ -10,6 +10,10 @@ import * as actions from "../actions";
 class Projects extends Component {
   state = { editMode: false, colour: "", editButtonText: "Edit" }
 
+  componentDidMount() {
+    this.props.fetchTodoCount();
+  }
+
   renderProjects() {
     if(this.props.auth) {
       const { projects } = this.props.auth;
@@ -54,10 +58,11 @@ class Projects extends Component {
     return this.setState({ editMode: false, colour: "", editButtonText: "Edit" });
   }
 
-  onSubmit = (formValues) => {
+  onSubmit = async (formValues) => {
     const projectName = formValues.addProject;
-    this.props.addProject(projectName);
+    await this.props.addProject(projectName);
     this.props.reset();
+    this.props.fetchTodoCount();
   }
 
   render() {

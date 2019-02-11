@@ -1,5 +1,5 @@
 import axios from "axios";
-import { EDIT_PROJECT_NAME, DELETE_PROJECT, ADD_PROJECT, FETCH_TODOS, SET_CATEGORY, FETCH_USER, ADD_TODO, UPDATE_ORDER, DELETE_TODO, EDIT_TODO_TEXT } from "./types";
+import { FETCH_TODO_COUNT, EDIT_PROJECT_NAME, DELETE_PROJECT, ADD_PROJECT, FETCH_TODOS, SET_CATEGORY, FETCH_USER, ADD_TODO, UPDATE_ORDER, DELETE_TODO, EDIT_TODO_TEXT } from "./types";
 
 export const fetchUser = () => async (dispatch, getState) => {
   try {
@@ -33,6 +33,9 @@ export const editProjectName = (name, newName) => async (dispatch) => {
   const response = await axios.patch(`/api/current_user/editProjectName/${name}`, { newName: newName });
   dispatch({ type: EDIT_PROJECT_NAME, payload: response.data });
 };
+
+
+
 // TODO actions
 
 export const fetchTodos = (category) => async (dispatch) => {
@@ -40,6 +43,11 @@ export const fetchTodos = (category) => async (dispatch) => {
   const todos = response.data.todos;
   dispatch({ type: FETCH_TODOS, payload: todos })
 }
+
+export const fetchTodoCount = () => async (dispatch) => {
+  const response = await axios.get("/api/todos/count");
+  dispatch({ type: FETCH_TODO_COUNT, payload: response.data });
+};
 
 export const addTodo = (todo) => async (dispatch, getState) => {
   const response = await axios.post("/api/todos", todo);

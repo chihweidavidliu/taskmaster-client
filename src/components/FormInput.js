@@ -2,7 +2,7 @@ import React from "react";
 import { Field, reduxForm } from "redux-form";
 import { connect } from "react-redux";
 
-import { addTodo } from "../actions";
+import * as actions from "../actions";
 import "./styles/FormInput.css";
 
 class FormInput extends React.Component {
@@ -19,11 +19,11 @@ class FormInput extends React.Component {
     );
   }
 
-  onSubmit = (formValues) => {
+  onSubmit = async (formValues) => {
     const todoText = formValues.todoInput; // get todo text
-    this.props.addTodo({text: todoText, category: this.props.category, _creator: this.props.auth._id }); // dispatch action creator
+    await this.props.addTodo({text: todoText, category: this.props.category, _creator: this.props.auth._id }); // dispatch action creator
     this.props.reset(); // reset value of input
-    // action creator to update order in the database
+    this.props.fetchTodoCount(); // update number of todos for each category
   }
 
   render() {
@@ -41,5 +41,5 @@ const mapStateToProps = (state) => {
     auth: state.auth
   }
 };
-const wrapped = connect(mapStateToProps, { addTodo: addTodo }) (FormInput);
+const wrapped = connect(mapStateToProps, actions) (FormInput);
 export default reduxForm({ form: "todoForm" }) (wrapped);
