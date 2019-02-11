@@ -1,5 +1,5 @@
 ::-webkit-scrollbar {
-   width: 2px !important;
+   width: 3px !important;
 }
 
 .todo-item i {
@@ -27,14 +27,14 @@
 
 #todoList {
   height: 67vh;
-  overflow-y: scroll;
+  overflow-y: auto;
   overflow-x: hidden;
 }
 
 .todo-item {
   background-color: whitesmoke;
   color: #474747;
-  margin: 8px;
+  margin: 10px;
   font-size: 17px;
   border-radius: 5px !important;
   display: flex;

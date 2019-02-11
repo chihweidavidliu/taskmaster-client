@@ -61,8 +61,12 @@ class CategoryLink extends Component {
 
   renderCounter() {
     if(this.props.editMode === false) {
+      let style;
+      if(this.props.name === "Inbox") {
+        style = { marginRight: "10px" };
+      }
       return (
-        <Label circular color="gray" >{this.props.numOfTodos}</Label>
+        <Label circular color="gray" style={style} >{this.props.numOfTodos}</Label>
       )
     }
   }
