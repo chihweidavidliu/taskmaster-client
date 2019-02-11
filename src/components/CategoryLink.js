@@ -11,7 +11,7 @@ class CategoryLink extends Component {
 
   handleItemClick = (e, { name }) => {
     // editMode passed down from Projects component state
-    if(this.props.editMode === false) {
+    if(this.props.editMode === false || !this.props.editMode) {
       this.props.setCategory(name);
       this.props.fetchTodos(name);
     } else {

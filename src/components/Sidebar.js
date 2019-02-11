@@ -18,7 +18,7 @@ class SideBar extends Component {
     return (
       <div className="three wide column">
         <Menu fluid secondary vertical id="sidebar">
-          <CategoryLink name="Inbox" />
+          <CategoryLink name="Inbox" editMode={false} />
           <Projects setting="sidebar" />
           <Dropdown item text="Filter Posts">
             <Dropdown.Menu>
