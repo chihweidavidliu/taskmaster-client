@@ -6,6 +6,7 @@ import * as actions from "../actions";
 import "./styles/Sidebar.css";
 import CategoryLink from "./CategoryLink";
 import Projects from "./Projects";
+import PDFButton from "./PDFButton";
 
 class SideBar extends Component {
   state = {};
@@ -22,10 +23,7 @@ class SideBar extends Component {
 
         <Dropdown text='Tools' floating style={{ marginLeft: "17px"}}>
           <Dropdown.Menu>
-            <Dropdown.Item compact>
-              <Icon name="file pdf"/>
-              Export PDF
-            </Dropdown.Item>
+            <PDFButton />
           </Dropdown.Menu>
         </Dropdown>
 
