@@ -15,7 +15,12 @@ class Projects extends Component {
       const { projects } = this.props.auth;
       return projects.map(project => {
         return (
-          <CategoryLink editMode={this.state.editMode} key={project} name={project} setting={this.props.setting}>
+          <CategoryLink
+            editMode={this.state.editMode}
+            colour={this.state.colour}
+            key={project}
+            name={project}
+            setting={this.props.setting}>
           </CategoryLink>
         )
       })

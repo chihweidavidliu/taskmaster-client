@@ -5,7 +5,6 @@ import { Menu } from "semantic-ui-react";
 
 import Root from "../../Root";
 import CategoryLink from "../CategoryLink";
-import DeleteButton from "../DeleteButton";
 
 let wrapped;
 
@@ -25,8 +24,4 @@ afterEach(() => {
 
 it("should render a Menu Item", () => {
   expect(wrapped.find(Menu.Item).length).toEqual(1);
-});
-
-it("should render a DeleteButton", () => {
-  expect(wrapped.find(DeleteButton).length).toEqual(1);
 });

@@ -36,7 +36,7 @@ class CategoryLink extends Component {
 
   renderDelete() {
     if (this.props.name !== "Inbox" && this.props.editMode === true) {
-      return <DeleteButton name={this.props.name} target="project" />;
+      return <DeleteButton colour={this.props.colour} name={this.props.name} target="project" />;
     }
   }
 
@@ -49,6 +49,7 @@ class CategoryLink extends Component {
           onDoubleClick={this.handleDoubleClick}
           onBlur={this.handleBlur}
           onKeyPress={this.handleKeyPress}
+          style={{ color: this.props.colour }}
         >
           {this.props.name}
         </div>

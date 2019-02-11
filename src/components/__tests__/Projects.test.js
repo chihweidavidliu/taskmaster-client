@@ -1,11 +1,12 @@
 import React from "react";
 import { mount } from "enzyme";
-import { Input } from "semantic-ui-react";
+import { Input, Button } from "semantic-ui-react";
 import moxios from "moxios";
 
 import Root from "../../Root";
 import Projects from "../Projects";
 import CategoryLink from "../CategoryLink";
+import DeleteButton from "../DeleteButton";
 
 let wrapped;
 beforeEach(() => {
@@ -71,3 +72,15 @@ it("should add a project on submit", (done) => {
     done();
   });
 });
+
+it("should render an edit button", () => {
+  expect(wrapped.find(Button).length).toEqual(1);
+  expect(wrapped.find(Button).text()).toBe("Edit");
+})
+
+it("should show a delete button and edit prompt when Edit button is clicked", () => {
+  wrapped.find(Button).simulate("click");
+  wrapped.update();
+  expect(wrapped.find(Button).text()).toBe("Done");
+  expect(wrapped.find(DeleteButton).length).toEqual(1);
+})
