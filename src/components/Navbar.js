@@ -16,7 +16,7 @@ class Navbar extends Component {
 
   render() {
     return (
-      <div className="ui menu" style={{backgroundColor: "#05A89E"}}>
+      <div className="ui menu stackable" style={{backgroundColor: "#05A89E"}}>
         <div className="item">
           <Link to="/dashboard"><h1>TaskMaster</h1></Link>
         </div>

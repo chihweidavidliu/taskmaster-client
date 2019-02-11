@@ -16,7 +16,7 @@ class SideBar extends Component {
 
   render() {
     return (
-      <div className="three wide column">
+      <div className="three wide column sidebar-container">
         <Menu fluid secondary vertical id="sidebar">
           <CategoryLink name="Inbox" editMode={false} />
           <Projects setting="sidebar" />
