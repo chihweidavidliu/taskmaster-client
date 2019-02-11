@@ -19,7 +19,7 @@ class SideBar extends Component {
       <div className="three wide column">
         <Menu fluid secondary vertical id="sidebar">
           <CategoryLink name="Inbox" />
-          <Projects />
+          <Projects setting="sidebar" />
           <Dropdown item text="Filter Posts">
             <Dropdown.Menu>
               <Dropdown.Header icon="folder" content="Project" />

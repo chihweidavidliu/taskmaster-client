@@ -10,18 +10,21 @@ class CategoryLink extends Component {
   state = { contentEditable: false }
 
   handleItemClick = (e, { name }) => {
-    this.props.setCategory(name);
-    this.props.fetchTodos(name);
+    // editMode passed down from Projects component state
+    if(this.props.editMode === false) {
+      this.props.setCategory(name);
+      this.props.fetchTodos(name);
+    } else {
+      this.setState({ contentEditable: true });
+    }
   };
-
-  handleDoubleClick = (e) => {
-    this.setState({ contentEditable: true })
-  }
 
   handleBlur = (e) => {
     const newName = e.target.innerText;
     this.props.editProjectName(this.props.name, newName); // send new text to state onBlur
     this.setState({ contentEditable: false });
+    this.props.setCategory(newName);
+    this.props.fetchTodos(newName);
   }
 
   handleKeyPress = (e) => {
@@ -32,7 +35,7 @@ class CategoryLink extends Component {
   }
 
   renderDelete() {
-    if (this.props.name !== "Inbox") {
+    if (this.props.name !== "Inbox" && this.props.editMode === true) {
       return <DeleteButton name={this.props.name} target="project" />;
     }
   }

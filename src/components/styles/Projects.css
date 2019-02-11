@@ -1,0 +1,11 @@
+.projects-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#edit-instructions {
+  font-size: 12px;
+  margin-top: 8px;
+  color: teal;
+}
