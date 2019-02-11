@@ -1,5 +1,5 @@
 ::-webkit-scrollbar {
-    display: none;
+   width: 2px !important;
 }
 
 .todo-item i {

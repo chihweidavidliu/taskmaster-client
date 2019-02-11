@@ -9,3 +9,15 @@
   margin-top: 8px;
   color: teal;
 }
+
+#projects-list {
+  max-height: 300px;
+  overflow-y: scroll;
+}
+
+
+@media only screen and (max-width: 780px) {
+  #projects-list {
+    max-height: 200px;
+  }
+}

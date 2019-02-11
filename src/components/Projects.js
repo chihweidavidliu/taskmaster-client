@@ -47,7 +47,7 @@ class Projects extends Component {
 
   renderEditInstructions() {
     if(this.state.editMode === true) {
-      return <p id="edit-instructions">Double-click to edit name</p>
+     return <p id="edit-instructions">Double-click to edit name</p>
     }
   }
 
@@ -60,6 +60,9 @@ class Projects extends Component {
 
   onSubmit = async (formValues) => {
     const projectName = formValues.addProject;
+    if(this.props.auth.projects.includes(projectName) || projectName === "Inbox") {
+      return alert("You already have a project with this name. Please choose a different name.");
+    }
     await this.props.addProject(projectName);
     this.props.reset();
     this.props.fetchTodoCount();
@@ -79,7 +82,9 @@ class Projects extends Component {
       </div>
         {this.renderEditInstructions()}
         <Menu.Menu id="project-menu">
-          {this.renderProjects()}
+          <div id="projects-list">
+            {this.renderProjects()}
+          </div>
           <Menu.Item>
             <form className="ui form" onSubmit={this.props.handleSubmit(this.onSubmit)}>
               <Field name="addProject" component={this.renderInput} />

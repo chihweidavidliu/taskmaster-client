@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Menu } from "semantic-ui-react";
+import { Menu, Label } from "semantic-ui-react";
 import { connect } from "react-redux";
 
 import "./styles/CategoryLink.css";
@@ -59,6 +59,20 @@ class CategoryLink extends Component {
     return <div>{this.props.name}</div>
   }
 
+  renderCounter() {
+    if(this.props.editMode === false) {
+      return (
+        <Label circular color="gray" >{this.props.numOfTodos}</Label>
+      )
+    }
+  }
+
+  renderLabel() {
+    if(this.props.name !== "Inbox") {
+      return <Label tiny empty={true} circular color="teal" style={{ marginRight: "5px" }} />
+    }
+  }
+
   render() {
     return (
       <Menu.Item
@@ -68,8 +82,11 @@ class CategoryLink extends Component {
         className="project"
       >
         <div className="project-contents">
-          {this.renderName()}
-          {this.props.numOfTodos}
+          <div className="group">
+            {this.renderLabel()}
+            {this.renderName()}
+          </div>
+          {this.renderCounter()}
           {this.renderDelete()}
         </div>
       </Menu.Item>

@@ -12,32 +12,23 @@ class SideBar extends Component {
 
   handleItemClick = (e, { name }) => this.props.setCategory(name);
 
-  render() {
-    const { activeItem } = this.state;
 
+  render() {
     return (
       <div className="three wide column">
         <Menu fluid secondary vertical id="sidebar">
           <CategoryLink name="Inbox" editMode={false} />
           <Projects setting="sidebar" />
-          <Dropdown item text="Filter Posts">
-            <Dropdown.Menu>
-              <Dropdown.Header icon="folder" content="Project" />
-              <Dropdown.Menu scrolling />
-              <Dropdown.Divider />
-              <Dropdown.Header icon="tags" content="Tag Label" />
-              <Dropdown.Menu scrolling />
-            </Dropdown.Menu>
-          </Dropdown>
-          <Dropdown item text="Tools">
-            <Dropdown.Menu>
-              <Dropdown.Item>
-                <Icon name="file pdf"/>
-                Export PDF
-              </Dropdown.Item>
-            </Dropdown.Menu>
-          </Dropdown>
-          <Menu.Item as="a" href="/api/logout" name="Sign-out" active={activeItem === "signout"} />
+
+        <Dropdown text='Tools' floating style={{ marginLeft: "17px"}}>
+          <Dropdown.Menu>
+            <Dropdown.Item compact>
+              <Icon name="file pdf"/>
+              Export PDF
+            </Dropdown.Item>
+          </Dropdown.Menu>
+        </Dropdown>
+
         </Menu>
       </div>
     );

@@ -27,7 +27,8 @@ beforeEach(() => {
         category: "Inbox"
       }
     ],
-    category: "Inbox"
+    category: "Inbox",
+    categoryCounts: { Inbox: 1, Misc: 0 }
   };
 
   wrapped = mount(
@@ -49,14 +50,13 @@ it("should display todos in state", () => {
 });
 
 it("should display a todo when FormInput is submitted", (done) => {
-  // stub the request with moxios
   moxios.stubRequest("/api/todos", {
     status: 200,
     response: {
       data: { _id: "fajgakhgkehg33", text: "new todo", _creator: "5c5c6a960a759e145f1e24b5", category: "Inbox" }
     }
   });
-  // simulate the entry of a new todo
+
   wrapped.find("[placeholder='Enter todo']").simulate("change", { target: { value: "new todo" } });
   wrapped.find("#todoForm").simulate("submit");
   // wait for the stub response
@@ -90,7 +90,6 @@ it("should delete a todo when delete button is clicked", (done) => {
     expect(wrapped.find(Todo).length).toEqual(0);
     done();
   });
-
 });
 
 it("should display a list of appropriate todos when project folder is clicked", (done) => {

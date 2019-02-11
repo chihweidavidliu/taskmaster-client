@@ -22,7 +22,8 @@ beforeEach(() => {
           name: "Chih-Wei Liu",
           __v: 0,
           projects: ["Misc"]
-        }
+        },
+        categoryCounts: { Inbox: 0, Misc: 0 }
       }}
     >
       <Projects />
@@ -47,9 +48,18 @@ it("should display a CategoryLink for each project in state", () => {
 });
 
 it("should clear itself on submit", () => {
+  moxios.stubRequest("/api/todos/count", {
+    status: 200,
+    response: {
+      data: { Inbox: 2, Misc: 0 }
+    }
+  });
+
   wrapped.find("form").simulate("submit");
-  wrapped.update();
-  expect(wrapped.find("input").prop("value")).toEqual("");
+  moxios.wait(() => {
+    wrapped.update();
+    expect(wrapped.find("input").prop("value")).toEqual("");
+  });
 });
 
 it("should add a project on submit", (done) => {
@@ -77,6 +87,7 @@ it("should render an edit button", () => {
   expect(wrapped.find(Button).length).toEqual(1);
   expect(wrapped.find(Button).text()).toBe("Edit");
 })
+
 
 it("should show a delete button and edit prompt when Edit button is clicked", () => {
   wrapped.find(Button).simulate("click");
