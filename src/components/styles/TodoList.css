@@ -71,6 +71,7 @@
 
 .todo-tools {
   display: flex;
+  align-items: center;
 }
 
 .fa-grip-vertical {

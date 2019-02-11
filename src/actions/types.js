@@ -10,3 +10,4 @@ export const REVERSE_SCALE = "REVERSE_SCALE";
 export const SET_CATEGORY = "SET_CATEGORY;"
 export const ADD_PROJECT = "ADD_PROJECT";
 export const DELETE_PROJECT = "DELETE_PROJECT";
+export const EDIT_PROJECT_NAME = "EDIT_PROJECT_NAME";

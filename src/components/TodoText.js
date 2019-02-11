@@ -6,7 +6,7 @@ import { editTodoText } from "../actions";
 class TodoText extends React.Component {
   state = { contentEditable: false }
 
-  handleDoubleClick = () => {
+  handleClick = () => {
     this.setState({ contentEditable: true })
   }
 
@@ -31,7 +31,7 @@ class TodoText extends React.Component {
         suppressContentEditableWarning={true}
         onBlur={this.handleBlur}
         onKeyPress={this.handleKeyPress}
-        onClick={this.handleDoubleClick}
+        onClick={this.handleClick}
       >
         {this.props.todo}
       </div>

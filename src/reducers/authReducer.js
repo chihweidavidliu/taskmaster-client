@@ -1,4 +1,4 @@
-import { FETCH_USER, ADD_PROJECT, DELETE_PROJECT } from "../actions/types";
+import { EDIT_PROJECT_NAME, FETCH_USER, ADD_PROJECT, DELETE_PROJECT } from "../actions/types";
 
 export default (state = null, action) => {
   switch (action.type) {
@@ -7,6 +7,8 @@ export default (state = null, action) => {
     case ADD_PROJECT:
       return action.payload;
     case DELETE_PROJECT:
+      return action.payload;
+    case EDIT_PROJECT_NAME:
       return action.payload;
     default:
       return state;
