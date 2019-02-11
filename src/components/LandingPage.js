@@ -12,8 +12,9 @@ const LandingPage = () => {
             <h1>TaskMaster</h1>
           </Link>
         </div>
-        <a href="/auth/google">
-          <i className="google icon" /> Sign-in with Google
+        <a className="ui google plus button" href="/auth/google">
+          <i class="google icon"></i>
+          Sign in with Google
         </a>
       </div>
       <div className="ui stackable center aligned two column grid landingMessage">

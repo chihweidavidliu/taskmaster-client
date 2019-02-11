@@ -12,9 +12,10 @@
   padding: 25px;
   color: #084541;
   flex-direction: column;
+  height: 25vh;
 }
 
-.navbar a {
+.navbar .logo {
   color: #084541 !important;
   font-size: 18px !important;
   margin-top: 20px;
@@ -60,8 +61,8 @@
   align-items:center;
   justify-content: center;
   flex-direction: column;
-  margin-top: 2vh;
-  height: 20vh;
+  margin-top: 32vh;
+  height: 15vh;
   background: #05A89E;
 }
 
@@ -94,6 +95,7 @@
     height: 15vh !important;
     flex-direction: row;
   }
+
   .message {
     margin: 10px 10px 0px 10px !important;
   }
