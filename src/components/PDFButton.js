@@ -52,7 +52,7 @@ class PDFButton extends React.Component {
 
   render() {
     return (
-      <Dropdown.Item compact onClick={this.handleClick}>
+      <Dropdown.Item onClick={this.handleClick}>
         <Icon name="file pdf"/>
         Export PDF
       </Dropdown.Item>
