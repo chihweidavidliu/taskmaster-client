@@ -1,12 +1,13 @@
 import React from "react";
 import { mount } from "enzyme";
+import moxios from "moxios";
 import Root from "../../Root";
 import FormInput from "../FormInput";
 
 let wrapped;
 beforeEach(() => {
   wrapped = mount(
-    <Root initialState={{ auth: { _id: "fgajsgjashgjhejge" }}}>
+    <Root initialState={{ auth: { _id: "5c5c6a960a759e145f1e24b5" }}}>
       <FormInput />
     </Root>
   );
@@ -27,9 +28,17 @@ it("should render an input that users can type in", () => {
 });
 
 it("should clear itself on submit", () => {
+  moxios.stubRequest("/api/todos", {
+    status: 200,
+    response: {
+      data: { _id: "fajgakhgkehg33", text: "new todo", _creator: "5c5c6a960a759e145f1e24b5", category: "Inbox" }
+    }
+  });
+
   wrapped.find("form").simulate("submit");
-  // needded to set initial state above in Root because the form will only clear after it tries to send the todo to action _creator
-  // can't do so without creator id property from redux store
-  wrapped.update();
-  expect(wrapped.find("input").prop("value")).toEqual("");
+
+  moxios.wait(() => {
+    wrapped.update();
+    expect(wrapped.find("input").prop("value")).toEqual("");
+  })
 });

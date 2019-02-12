@@ -88,10 +88,24 @@ it("should render an edit button", () => {
   expect(wrapped.find(Button).text()).toBe("Edit");
 })
 
+describe("edit button behaviour", () => {
+  it("should show a delete and grab buttons when Edit button is clicked", () => {
+    wrapped.find(Button).simulate("click");
+    wrapped.update();
+    expect(wrapped.find(DeleteButton).length).toEqual(1);
+    expect(wrapped.find(".fa-grip-vertical").length).toEqual(1);
+  });
 
-it("should show a delete button and edit prompt when Edit button is clicked", () => {
-  wrapped.find(Button).simulate("click");
-  wrapped.update();
-  expect(wrapped.find(Button).text()).toBe("Done");
-  expect(wrapped.find(DeleteButton).length).toEqual(1);
-})
+  it("should change message to Done when edit button is clicked", () => {
+    wrapped.find(Button).simulate("click");
+    wrapped.update();
+    expect(wrapped.find(Button).text()).toBe("Done");
+  });
+
+  it("should show edit instructions when edit button is clicked", () => {
+    wrapped.find(Button).simulate("click");
+    wrapped.update();
+    expect(wrapped.find("#edit-instructions").length).toEqual(1);
+  });
+
+});

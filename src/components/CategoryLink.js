@@ -83,7 +83,6 @@ class CategoryLink extends Component {
   }
 
   render() {
-    console.log(this.props)
     return (
       <Menu.Item
         name={this.props.name}
