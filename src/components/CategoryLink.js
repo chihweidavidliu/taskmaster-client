@@ -63,17 +63,17 @@ class CategoryLink extends Component {
     if(this.props.editMode === false) {
       let style;
       if(this.props.name === "Inbox") {
-        style = { marginRight: "10px" };
+        style = { marginRight: "12px" };
       }
       return (
-        <Label circular color="gray" style={style} >{this.props.numOfTodos}</Label>
+        <Label circular style={style} >{this.props.numOfTodos}</Label>
       )
     }
   }
 
   renderLabel() {
     if(this.props.name !== "Inbox") {
-      return <Label tiny empty={true} circular color="teal" style={{ marginRight: "5px" }} />
+      return <Label empty={true} circular color="teal" style={{ marginRight: "8px" }} />
     }
   }
 
@@ -104,6 +104,8 @@ const mapStateToProps = (state, ownProps) => {
     numOfTodos: state.categoryCounts[ownProps.name]
   };
 };
+
+
 export default connect(
   mapStateToProps,
   actions

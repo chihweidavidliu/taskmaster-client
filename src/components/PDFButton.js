@@ -9,7 +9,7 @@ class PDFButton extends React.Component {
   handleClick = () => {
     const { todos, category } = this.props;
 
-    const list = todos.map(todo => {
+    const list = todos.map((todo) => {
       const todoObject = { text: todo.text, style: "todo" };
       return todoObject;
     }); // get text only from the todos
@@ -19,10 +19,7 @@ class PDFButton extends React.Component {
     const date = today.toLocaleDateString("en-UK");
 
     var docDefinition = {
-      content: [
-        { text: `My todos (${category})`, style: "header" },
-        { ol: list },
-      ],
+      content: [{ text: `My todos (${category})`, style: "header" }, { ol: list }],
 
       footer: {
         columns: [
@@ -48,16 +45,18 @@ class PDFButton extends React.Component {
 
     pdfMake.createPdf(docDefinition).download();
     return docDefinition;
-  }
+  };
 
   render() {
     return (
       <Dropdown.Item onClick={this.handleClick}>
-        <Icon name="file pdf"/>
-        Export PDF
+        <p style={{ fontSize: "14px" }}>
+          <Icon name="file pdf" />
+          Export PDF
+        </p>
       </Dropdown.Item>
-    )
-  };
+    );
+  }
 }
 
 const mapStateToProps = (state) => {
@@ -66,4 +65,4 @@ const mapStateToProps = (state) => {
     category: state.category
   };
 };
-export default connect(mapStateToProps) (PDFButton);
+export default connect(mapStateToProps)(PDFButton);
