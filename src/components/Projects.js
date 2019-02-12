@@ -8,6 +8,7 @@ import "./styles/Projects.css";
 import CategoryLink from "./CategoryLink";
 import * as actions from "../actions";
 
+// Enhance components to make them sortable
 const ProjectSortableItem = sortableElement(({ editMode, colour, name, setting }) => (
   <CategoryLink editMode={editMode} colour={colour} name={name} setting={setting} />
 ));
@@ -16,6 +17,7 @@ const ProjectSortableContainer = sortableContainer(({ children }) => {
   return <div id="projects-list">{children}</div>;
 });
 
+// Projects component itself
 class Projects extends Component {
   state = { editMode: false, colour: "", editButtonText: "Edit" };
 
@@ -24,7 +26,6 @@ class Projects extends Component {
   }
 
   onSortEnd = ({ oldIndex, newIndex }) => {
-    console.log("Sort ended");
     this.props.updateProjectOrder(oldIndex, newIndex);
   }
 
@@ -78,7 +79,7 @@ class Projects extends Component {
 
   renderEditInstructions() {
     if (this.state.editMode === true) {
-      return <p id="edit-instructions">Double-click to edit name</p>;
+      return <p id="edit-instructions">Drag to reorder. Double-click to edit.</p>;
     }
   }
 

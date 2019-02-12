@@ -10,19 +10,19 @@ class CategoryLink extends Component {
   state = { contentEditable: false }
 
   handleItemClick = (e, { name }) => {
-    // editMode passed down from Projects component state
-    if(this.props.editMode === false || !this.props.editMode) {
+    if(this.props.editMode === false) {
       this.props.setCategory(name);
       this.props.fetchTodos(name);
-    } else {
+    } else if(this.props.editMode === true){
       this.setState({ contentEditable: true });
     }
   };
 
-  handleBlur = (e) => {
+  handleBlur = async (e) => {
     const newName = e.target.innerText;
-    this.props.editProjectName(this.props.name, newName); // send new text to state onBlur
+    await this.props.editProjectName(this.props.name, newName); // send new text to state onBlur
     this.setState({ contentEditable: false });
+    this.props.fetchTodoCount();
     this.props.setCategory(newName);
     this.props.fetchTodos(newName);
   }
@@ -34,9 +34,14 @@ class CategoryLink extends Component {
     }
   }
 
-  renderDelete() {
+  renderEditTools() {
     if (this.props.name !== "Inbox" && this.props.editMode === true) {
-      return <DeleteButton colour={this.props.colour} name={this.props.name} target="project" />;
+      return (
+        <div className="project-edit-tools" style={{ color: this.props.colour }}>
+          <DeleteButton colour={this.props.colour} name={this.props.name} target="project" />
+          <i className="fas fa-grip-vertical" aria-label="Drag to reorder" title="Drag to reorder"></i>
+        </div>
+      )
     }
   }
 
@@ -78,6 +83,7 @@ class CategoryLink extends Component {
   }
 
   render() {
+    console.log(this.props)
     return (
       <Menu.Item
         name={this.props.name}
@@ -85,13 +91,13 @@ class CategoryLink extends Component {
         onClick={this.handleItemClick}
         className="project"
       >
-        <div className="project-contents">
+        <div className="project-contents" style={{ transition: "0.5s" /* stops sortable behaviour interfering with click */ }}>
           <div className="group">
             {this.renderLabel()}
             {this.renderName()}
           </div>
           {this.renderCounter()}
-          {this.renderDelete()}
+          {this.renderEditTools()}
         </div>
       </Menu.Item>
     );
@@ -104,7 +110,6 @@ const mapStateToProps = (state, ownProps) => {
     numOfTodos: state.categoryCounts[ownProps.name]
   };
 };
-
 
 export default connect(
   mapStateToProps,
