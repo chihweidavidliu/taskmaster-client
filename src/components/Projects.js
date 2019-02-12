@@ -33,16 +33,28 @@ class Projects extends Component {
     if(this.props.auth) {
       const { projects } = this.props.auth;
       return projects.map((project, index) => {
-        return (
-          <ProjectSortableItem
-            editMode={this.state.editMode}
-            colour={this.state.colour}
-            name={project}
-            setting={this.props.setting}
-            key={project}
-            index={index}
-          />
-        )
+        if (this.state.editMode === true) {
+          return (
+            <ProjectSortableItem
+              editMode={this.state.editMode}
+              colour={this.state.colour}
+              name={project}
+              setting={this.props.setting}
+              key={project}
+              index={index}
+            />
+          )
+        } else {
+          return (
+            <CategoryLink
+              editMode={this.state.editMode}
+              colour={this.state.colour}
+              key={project}
+              name={project}
+              setting={this.props.setting}
+            />
+          )
+        }
       });
     }
   }
@@ -111,7 +123,7 @@ class Projects extends Component {
         </div>
         {this.renderEditInstructions()}
         <Menu.Menu id="project-menu">
-          <ProjectSortableContainer onSortEnd={this.onSortEnd}>
+          <ProjectSortableContainer onSortEnd={this.onSortEnd} useDragHandle>
             {this.renderSortableProjects()}
           </ProjectSortableContainer>
           <Menu.Item>

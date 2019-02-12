@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 
 import "./styles/CategoryLink.css";
 import DeleteButton from "./DeleteButton";
+import DragHandle from "./DragHandle";
 import * as actions from "../actions";
 
 class CategoryLink extends Component {
@@ -39,7 +40,7 @@ class CategoryLink extends Component {
       return (
         <div className="project-edit-tools" style={{ color: this.props.colour }}>
           <DeleteButton colour={this.props.colour} name={this.props.name} target="project" />
-          <i className="fas fa-grip-vertical" aria-label="Drag to reorder" title="Drag to reorder"></i>
+          <DragHandle />
         </div>
       )
     }
@@ -90,7 +91,7 @@ class CategoryLink extends Component {
         onClick={this.handleItemClick}
         className="project"
       >
-        <div className="project-contents" style={{ transition: "0.5s" /* stops sortable behaviour interfering with click */ }}>
+        <div className="project-contents">
           <div className="group">
             {this.renderLabel()}
             {this.renderName()}

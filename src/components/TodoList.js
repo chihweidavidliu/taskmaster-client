@@ -18,7 +18,7 @@ class TodoList extends React.Component {
   };
 
   render() {
-    return <SortableList onSortEnd={this.onSortEnd} />;
+    return <SortableList onSortEnd={this.onSortEnd} useDragHandle />;
   }
 }
 
