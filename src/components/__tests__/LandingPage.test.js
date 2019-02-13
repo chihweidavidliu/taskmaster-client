@@ -34,8 +34,8 @@ describe("the navbar", () => {
 });
 
 describe("the landingMessage", () => {
-  it("should contain a grid with two columns", () => {
-    expect(wrapped.find(".grid").children(".column").length).toEqual(2);
+  it("should contain a grid with two rows", () => {
+    expect(wrapped.find(".grid").children(".row").length).toEqual(2);
   });
 
   it("should contain a ul and a h3", () => {
@@ -45,11 +45,5 @@ describe("the landingMessage", () => {
 
   it("should contain an image of the interface", () => {
     expect(wrapped.find(".interface-screenshot").length).toEqual(1);
-  });
-});
-
-describe("the bottom bar", () => {
-  it("should contain an h4 with a signature", () => {
-    expect(wrapped.find(".bottom-wave").children("h4").length).toEqual(1);
   });
 });
