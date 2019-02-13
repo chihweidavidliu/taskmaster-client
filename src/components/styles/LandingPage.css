@@ -12,9 +12,9 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 25px;
+  padding: 20px;
   color: #084541;
-  height: 25vh;
+  height: 20vh;
 }
 
 .navbar .logo {
@@ -31,13 +31,13 @@
 }
 
 .messageContainer {
-  height: 50vh;
+  height: 55vh;
   display: flex;
   align-items: center;
 }
 
 .screenshotContainer {
-  height: 50vh;
+  height: 55vh;
   display: flex;
   align-items: center;
 }
@@ -104,7 +104,9 @@
 
   .navbar {
     flex-direction: column;
+    height: 23vh;
   }
+
 }
 
 @media only screen and (max-width: 600px) {
