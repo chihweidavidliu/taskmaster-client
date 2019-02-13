@@ -29,3 +29,9 @@
   justify-content: space-between;
   align-items: center;
 }
+
+.project-edit-tools {
+  margin-left: 5px;
+  display: flex;
+  align-items: center;
+}

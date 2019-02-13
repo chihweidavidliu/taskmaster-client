@@ -1,5 +1,10 @@
 /* small screen */
 
+.landingPage {
+  height: 100vh;
+  width: 100vw;
+}
+
 .landingPage h1 {
   font-family: Pacifico, sans-serif;
   font-size: 50px;
@@ -51,17 +56,8 @@
 }
 
 .bottom-wave {
-  clip-path: polygon(
-    0 5vw,
-    100% 0,
-    100% 100%,
-    0 calc(100%)
-  );
-  display: flex;
-  align-items:center;
-  justify-content: center;
-  flex-direction: column;
-  margin-top: 32vh;
+  width: 100vw;
+  margin-top: 5vh;
   height: 15vh;
   background: #05A89E;
 }
@@ -84,13 +80,17 @@
 }
 
 .signature {
-  position: fixed;
-  bottom: 2px;
-  right: 2px;
+  position: relative;
+  top: 8vh;
+  left: 0.5vw;
 }
 
 /* medium screen */
 @media only screen and (min-width: 780px) {
+  .landingPage {
+    overflow: hidden;
+  }
+
   .navbar {
     height: 15vh !important;
     flex-direction: row;
@@ -111,7 +111,7 @@
   }
 
   .bottom-wave {
-    margin-top: 8vh !important;
+    margin-top: 5vh !important;
     height: 15vh !important;
   }
 }
@@ -120,7 +120,7 @@
 @media only screen and (min-width: 900px) {
 
   .landingPage {
-    max-width: 100vw;
+    overflow: hidden;
   }
 
   .navbar {
@@ -132,11 +132,11 @@
   }
 
   .message ul {
-    font-size: 30px !important;
+    font-size: 29px !important;
   }
 
   .message {
-    margin: 40px 40px 0px 40px !important;
+    margin-top: 2.5vw !important;
   }
 
   .interface-screenshot {
@@ -147,7 +147,8 @@
   }
 
   .bottom-wave {
-    margin-top: 0vh !important;
-    height: 12vh !important;
+    margin-top: 5vh !important;
+    height: 25vh !important;
   }
+
 }

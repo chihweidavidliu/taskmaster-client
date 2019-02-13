@@ -5,6 +5,8 @@ import { connect } from "react-redux";
 import "./styles/CategoryLink.css";
 import DeleteButton from "./DeleteButton";
 import DragHandle from "./DragHandle";
+import EditProjectModal from "./EditProjectModal";
+
 import * as actions from "../actions";
 
 class CategoryLink extends Component {
@@ -39,6 +41,7 @@ class CategoryLink extends Component {
     if (this.props.name !== "Inbox" && this.props.editMode === true) {
       return (
         <div className="project-edit-tools" style={{ color: this.props.colour }}>
+          <EditProjectModal title={this.props.name} colour={this.props.colour} />
           <DeleteButton colour={this.props.colour} name={this.props.name} target="project" />
           <DragHandle />
         </div>
