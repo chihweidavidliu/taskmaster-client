@@ -16,7 +16,7 @@ beforeEach(() => {
   const initialState = {
     auth: {
       _id: "5c5c6a960a759e145f1e24b5",
-      projects: ["Misc"]
+      projects: [{ name: "Misc", color: "teal", iamge: null, _id: "dashfakjhfkahef"}]
     },
     todos: [
       {
@@ -57,7 +57,7 @@ it("should display a todo when FormInput is submitted", (done) => {
     }
   });
 
-  wrapped.find("[placeholder='Enter todo']").simulate("change", { target: { value: "new todo" } });
+  wrapped.find("[placeholder='Add a todo']").simulate("change", { target: { value: "new todo" } });
   wrapped.find("#todoForm").simulate("submit");
   // wait for the stub response
   moxios.wait(() => {

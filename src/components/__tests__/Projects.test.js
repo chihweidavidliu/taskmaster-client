@@ -21,7 +21,7 @@ beforeEach(() => {
           googleID: "105278708793854655515",
           name: "Chih-Wei Liu",
           __v: 0,
-          projects: ["Misc"]
+          projects: [{ name: "Misc", color: "teal", image: null, _id: "kjhfakjhfjfed" }]
         },
         categoryCounts: { Inbox: 0, Misc: 0 }
       }}

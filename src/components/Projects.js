@@ -9,8 +9,8 @@ import CategoryLink from "./CategoryLink";
 import * as actions from "../actions";
 
 // Enhance components to make them sortable
-const ProjectSortableItem = sortableElement(({ editMode, colour, name, setting }) => (
-  <CategoryLink editMode={editMode} colour={colour} name={name} setting={setting} />
+const ProjectSortableItem = sortableElement((props) => (
+  <CategoryLink {...props} />
 ));
 
 const ProjectSortableContainer = sortableContainer(({ children }) => {
@@ -19,7 +19,7 @@ const ProjectSortableContainer = sortableContainer(({ children }) => {
 
 // Projects component itself
 class Projects extends Component {
-  state = { editMode: false, colour: "", editButtonText: "Edit" };
+  state = { editMode: false, color: "", editButtonText: "Edit" };
 
   componentDidMount() {
     this.props.fetchTodoCount();
@@ -34,23 +34,27 @@ class Projects extends Component {
       const { projects } = this.props.auth;
       return projects.map((project, index) => {
         if (this.state.editMode === true) {
+          console.log(project.color)
           return (
             <ProjectSortableItem
               editMode={this.state.editMode}
-              colour={this.state.colour}
-              name={project}
+              color={this.state.color}
+              projectLabelColor={project.color}
+              name={project.name}
               setting={this.props.setting}
-              key={project}
+              key={project._id}
               index={index}
             />
           )
         } else {
+          console.log(project.color)
           return (
             <CategoryLink
               editMode={this.state.editMode}
-              colour={this.state.colour}
-              key={project}
-              name={project}
+              color={this.state.color}
+              projectLabelColor={project.color}
+              key={project._id}
+              name={project.name}
               setting={this.props.setting}
             />
           )
@@ -81,14 +85,20 @@ class Projects extends Component {
 
   handleEditClick = () => {
     if (this.state.editMode === false) {
-      return this.setState({ editMode: true, colour: "teal", editButtonText: "Done" });
+      return this.setState({ editMode: true, color: "teal", editButtonText: "Done" });
     }
-    return this.setState({ editMode: false, colour: "", editButtonText: "Edit" });
+    return this.setState({ editMode: false, color: "", editButtonText: "Edit" });
   };
 
   onSubmit = async (formValues) => {
     const projectName = formValues.addProject;
-    if (this.props.auth.projects.includes(projectName) || projectName === "Inbox") {
+    // get an array of project names only from the projects array
+    const { projects } = this.props.auth;
+    const projectNames = projects.map(project => {
+      return project.name;
+    })
+
+    if (projectNames.includes(projectName) || projectName === "Inbox") {
       return alert("You already have a project with this name. Please choose a different name.");
     }
     await this.props.addProject(projectName);
@@ -101,7 +111,7 @@ class Projects extends Component {
       <Menu.Item>
         <div className="projects-header">
           Projects
-          <Button className={`basic tiny compact ${this.state.colour}`} onClick={this.handleEditClick}>
+          <Button className={`basic tiny compact ${this.state.color}`} onClick={this.handleEditClick}>
             {this.state.editButtonText}
           </Button>
         </div>

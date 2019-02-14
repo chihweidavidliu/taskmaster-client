@@ -32,8 +32,8 @@ export const setCategory = (category) => {
 };
 
 // Project actions
-export const addProject = (project) => async (dispatch) => {
-  const response = await axios.patch("/api/current_user/addProject", { project: project });
+export const addProject = (projectName) => async (dispatch) => {
+  const response = await axios.patch("/api/current_user/addProject", { projectName: projectName });
   dispatch({ type: ADD_PROJECT, payload: response.data });
 };
 

@@ -5,9 +5,9 @@ import ColourChoiceLabel from "./ColourChoiceLabel";
 import "./styles/EditProjectModal.css";
 
 const EditProjectModal = (props) => (
-  <Modal trigger={<Icon name="options" />}>
+  <Modal trigger={<Icon name="options" title="More options" />}>
     <Modal.Header>
-      <Label empty={true} circular color={props.colour} style={{ marginRight: "10px" }} />
+      <Label empty={true} circular color={props.color} style={{ marginRight: "10px" }} />
       {props.title}
     </Modal.Header>
 

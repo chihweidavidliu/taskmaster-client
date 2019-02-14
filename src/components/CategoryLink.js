@@ -10,13 +10,13 @@ import EditProjectModal from "./EditProjectModal";
 import * as actions from "../actions";
 
 class CategoryLink extends Component {
-  state = { contentEditable: false }
+  state = { contentEditable: false };
 
   handleItemClick = (e, { name }) => {
-    if(this.props.editMode === false) {
+    if (this.props.editMode === false) {
       this.props.setCategory(name);
       this.props.fetchTodos(name);
-    } else if(this.props.editMode === true){
+    } else if (this.props.editMode === true) {
       this.setState({ contentEditable: true });
     }
   };
@@ -28,24 +28,25 @@ class CategoryLink extends Component {
     this.props.fetchTodoCount();
     this.props.setCategory(newName);
     this.props.fetchTodos(newName);
-  }
+  };
 
   handleKeyPress = (e) => {
-    if(e.key === "Enter") { // if user hits enter, prevent new paragraph and deblur todo
+    if (e.key === "Enter") {
+      // if user hits enter, prevent new paragraph and deblur todo
       e.preventDefault();
       e.target.blur();
     }
-  }
+  };
 
   renderEditTools() {
     if (this.props.name !== "Inbox" && this.props.editMode === true) {
       return (
-        <div className="project-edit-tools" style={{ color: this.props.colour }}>
-          <EditProjectModal title={this.props.name} colour={this.props.colour} />
-          <DeleteButton colour={this.props.colour} name={this.props.name} target="project" />
+        <div className="project-edit-tools" style={{ color: this.props.color }}>
+          <EditProjectModal title={this.props.name} color={this.props.projectLabelColor} />
+          <DeleteButton color={this.props.color} name={this.props.name} target="project" />
           <DragHandle />
         </div>
-      )
+      );
     }
   }
 
@@ -58,31 +59,33 @@ class CategoryLink extends Component {
           onDoubleClick={this.handleDoubleClick}
           onBlur={this.handleBlur}
           onKeyPress={this.handleKeyPress}
-          style={{ color: this.props.colour }}
+          style={{ color: this.props.color }}
         >
           {this.props.name}
         </div>
-      )
+      );
     }
 
-    return <div>{this.props.name}</div>
+    return <div>{this.props.name}</div>;
   }
 
   renderCounter() {
-    if(this.props.editMode === false) {
+    if (this.props.editMode === false) {
       let style;
-      if(this.props.name === "Inbox") {
+      if (this.props.name === "Inbox") {
         style = { marginRight: "12px" };
       }
       return (
-        <Label circular style={style} >{this.props.numOfTodos}</Label>
-      )
+        <Label circular style={style}>
+          {this.props.numOfTodos}
+        </Label>
+      );
     }
   }
 
   renderLabel() {
-    if(this.props.name !== "Inbox") {
-      return <Label empty={true} circular color="teal" style={{ marginRight: "8px" }} />
+    if (this.props.name !== "Inbox") {
+      return <Label empty={true} circular color={this.props.projectLabelColor} style={{ marginRight: "8px" }} />;
     }
   }
 

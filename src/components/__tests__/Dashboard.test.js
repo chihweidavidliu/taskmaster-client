@@ -17,7 +17,7 @@ beforeEach(() => {
   const initialState = {
     auth: {
       _id: "5c5c6a960a759e145f1e24b5",
-      projects: ["Inbox"]
+      projects: []
     },
     todos: [
       {

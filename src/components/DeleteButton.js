@@ -31,7 +31,7 @@ class DeleteButton extends Component {
     return (
       <button aria-label={title} title={title} className="deleteButton">
         <i
-          style={{ color: this.props.colour }}
+          style={{ color: this.props.color }}
           className={`white ${iconType} icon deleteIcon`}
           onClick={this.handleClick}
           onTransitionEnd={this.handleTransitionEnd}
