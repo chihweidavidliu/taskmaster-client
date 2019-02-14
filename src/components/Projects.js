@@ -29,7 +29,7 @@ class Projects extends Component {
     this.props.updateProjectOrder(oldIndex, newIndex);
   }
 
-  renderSortableProjects() {
+  renderProjects() {
     if(this.props.auth) {
       const { projects } = this.props.auth;
       return projects.map((project, index) => {
@@ -55,22 +55,6 @@ class Projects extends Component {
             />
           )
         }
-      });
-    }
-  }
-  renderProjects() {
-    if (this.props.auth) {
-      const { projects } = this.props.auth;
-      return projects.map((project) => {
-        return (
-          <CategoryLink
-            editMode={this.state.editMode}
-            colour={this.state.colour}
-            key={project}
-            name={project}
-            setting={this.props.setting}
-          />
-        );
       });
     }
   }
@@ -124,7 +108,7 @@ class Projects extends Component {
         {this.renderEditInstructions()}
         <Menu.Menu id="project-menu">
           <ProjectSortableContainer onSortEnd={this.onSortEnd} useDragHandle>
-            {this.renderSortableProjects()}
+            {this.renderProjects()}
           </ProjectSortableContainer>
           <Menu.Item>
             <form className="ui form" onSubmit={this.props.handleSubmit(this.onSubmit)}>

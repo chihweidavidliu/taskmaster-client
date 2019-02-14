@@ -34,10 +34,6 @@ describe("the navbar", () => {
 });
 
 describe("the landingMessage", () => {
-  it("should contain a grid with two rows", () => {
-    expect(wrapped.find(".grid").children(".row").length).toEqual(2);
-  });
-
   it("should contain a ul and a h3", () => {
     expect(wrapped.find(".message").children("ul").length).toEqual(1);
     expect(wrapped.find(".message").children("h3").length).toEqual(1);
