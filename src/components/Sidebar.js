@@ -20,13 +20,12 @@ class SideBar extends Component {
         <Menu fluid secondary vertical id="sidebar">
           <CategoryLink name="Inbox" editMode={false} />
           <Projects setting="sidebar" />
-
-        <Dropdown text='Tools' floating style={{ marginLeft: "17px"}}>
-          <Dropdown.Menu>
-            <PDFButton />
-          </Dropdown.Menu>
-        </Dropdown>
-
+          <Menu.Item>
+            Tools
+            <Menu.Menu id="tools-submenu">
+              <PDFButton />
+            </Menu.Menu>
+          </Menu.Item>
         </Menu>
       </div>
     );

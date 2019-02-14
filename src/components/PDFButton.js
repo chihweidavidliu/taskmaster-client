@@ -1,5 +1,5 @@
 import React from "react";
-import { Dropdown, Icon } from "semantic-ui-react";
+import { Menu, Icon } from "semantic-ui-react";
 import { connect } from "react-redux";
 import pdfMake from "pdfmake/build/pdfmake";
 import pdfFonts from "pdfmake/build/vfs_fonts";
@@ -49,12 +49,12 @@ class PDFButton extends React.Component {
 
   render() {
     return (
-      <Dropdown.Item onClick={this.handleClick}>
-        <p style={{ fontSize: "14px" }}>
+      <Menu.Item onClick={this.handleClick}>
+        <div className="tool-group">
           <Icon name="file pdf" />
-          Export PDF
-        </p>
-      </Dropdown.Item>
+          Export "{this.props.category}" as PDF
+        </div>
+      </Menu.Item>
     );
   }
 }

@@ -16,3 +16,8 @@
     height: 60vh;
   }
 }
+
+.tool-group {
+  margin-left: 3px;
+  margin-top: 10px;
+}
