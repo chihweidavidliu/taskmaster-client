@@ -1,4 +1,11 @@
-import { UPDATE_PROJECT_ORDER, EDIT_PROJECT_NAME, FETCH_USER, ADD_PROJECT, DELETE_PROJECT } from "../actions/types";
+import {
+  EDIT_PROJECT_COLOR,
+  UPDATE_PROJECT_ORDER,
+  EDIT_PROJECT_NAME,
+  FETCH_USER,
+  ADD_PROJECT,
+  DELETE_PROJECT
+} from "../actions/types";
 
 export default (state = null, action) => {
   switch (action.type) {
@@ -11,6 +18,8 @@ export default (state = null, action) => {
     case EDIT_PROJECT_NAME:
       return action.payload;
     case UPDATE_PROJECT_ORDER:
+      return action.payload;
+    case EDIT_PROJECT_COLOR:
       return action.payload;
     default:
       return state;

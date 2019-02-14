@@ -1,5 +1,6 @@
 import axios from "axios";
 import {
+  EDIT_PROJECT_COLOR,
   UPDATE_PROJECT_ORDER,
   FETCH_TODO_COUNT,
   EDIT_PROJECT_NAME,
@@ -45,6 +46,11 @@ export const deleteProject = (project) => async (dispatch) => {
 export const editProjectName = (name, newName) => async (dispatch) => {
   const response = await axios.patch(`/api/current_user/editProjectName/${name}`, { newName: newName });
   dispatch({ type: EDIT_PROJECT_NAME, payload: response.data });
+};
+
+export const editProjectColor = (id, newColor) => async (dispatch) => {
+  const response = await axios.patch(`/api/current_user/editProjectColor/${id}`, { newColor: newColor });
+  dispatch({ type: EDIT_PROJECT_COLOR, payload: response.data });
 };
 
 export const updateProjectOrder = (oldIndex, newIndex) => async (dispatch) => {

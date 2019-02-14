@@ -41,9 +41,9 @@ class CategoryLink extends Component {
   renderEditTools() {
     if (this.props.name !== "Inbox" && this.props.editMode === true) {
       return (
-        <div className="project-edit-tools" style={{ color: this.props.color }}>
-          <EditProjectModal title={this.props.name} color={this.props.projectLabelColor} />
-          <DeleteButton color={this.props.color} name={this.props.name} target="project" />
+        <div className="project-edit-tools" style={{ color: this.props.accentColor }}>
+          <EditProjectModal name={this.props.name} color={this.props.projectLabelColor} projectId={this.props.projectId}/>
+          <DeleteButton color={this.props.accentColor} name={this.props.name} target="project" />
           <DragHandle />
         </div>
       );
@@ -59,7 +59,7 @@ class CategoryLink extends Component {
           onDoubleClick={this.handleDoubleClick}
           onBlur={this.handleBlur}
           onKeyPress={this.handleKeyPress}
-          style={{ color: this.props.color }}
+          style={{ color: this.props.accentColor }}
         >
           {this.props.name}
         </div>

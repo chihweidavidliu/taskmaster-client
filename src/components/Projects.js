@@ -19,7 +19,7 @@ const ProjectSortableContainer = sortableContainer(({ children }) => {
 
 // Projects component itself
 class Projects extends Component {
-  state = { editMode: false, color: "", editButtonText: "Edit" };
+  state = { editMode: false, accentColor: "", editButtonText: "Edit" };
 
   componentDidMount() {
     this.props.fetchTodoCount();
@@ -38,11 +38,12 @@ class Projects extends Component {
           return (
             <ProjectSortableItem
               editMode={this.state.editMode}
-              color={this.state.color}
+              accentColor={this.state.accentColor}
               projectLabelColor={project.color}
               name={project.name}
               setting={this.props.setting}
               key={project._id}
+              projectId={project._id}
               index={index}
             />
           )
@@ -51,10 +52,11 @@ class Projects extends Component {
           return (
             <CategoryLink
               editMode={this.state.editMode}
-              color={this.state.color}
+              accentColor={this.state.accentColor}
               projectLabelColor={project.color}
               key={project._id}
               name={project.name}
+              projectId={project._id}
               setting={this.props.setting}
             />
           )
@@ -85,9 +87,9 @@ class Projects extends Component {
 
   handleEditClick = () => {
     if (this.state.editMode === false) {
-      return this.setState({ editMode: true, color: "teal", editButtonText: "Done" });
+      return this.setState({ editMode: true, accentColor: "teal", editButtonText: "Done" });
     }
-    return this.setState({ editMode: false, color: "", editButtonText: "Edit" });
+    return this.setState({ editMode: false, accentColor: "", editButtonText: "Edit" });
   };
 
   onSubmit = async (formValues) => {
@@ -111,7 +113,7 @@ class Projects extends Component {
       <Menu.Item>
         <div className="projects-header">
           Projects
-          <Button className={`basic tiny compact ${this.state.color}`} onClick={this.handleEditClick}>
+          <Button className={`basic tiny compact ${this.state.accentColor}`} onClick={this.handleEditClick}>
             {this.state.editButtonText}
           </Button>
         </div>

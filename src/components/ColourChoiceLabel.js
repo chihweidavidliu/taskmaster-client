@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import { Label } from "semantic-ui-react";
+import { connect } from "react-redux"
+import * as actions from "../actions";
 
 class ColourChoiceLabel extends Component {
   handleClick = () => {
-    console.log(this.props.color)
-
-    // action creator that patches the colour of the project 
+    this.props.editProjectColor(this.props.projectId, this.props.color);
   }
 
   render() {
@@ -13,4 +13,4 @@ class ColourChoiceLabel extends Component {
   }
 }
 
-export default ColourChoiceLabel;
+export default connect(null, actions) (ColourChoiceLabel);
