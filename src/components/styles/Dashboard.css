@@ -1,8 +1,17 @@
 .ui.grid {
-  height: 92vh;
+  height: 93vh;
 }
 
 .dashboard-wrapper {
   background-color: whitesmoke;
   width: 100vw;
+  height: 100vh;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+@media only screen and (max-width: 767px) {
+  .dashboard-wrapper {
+    overflow-y: auto !important;
+  }
 }
