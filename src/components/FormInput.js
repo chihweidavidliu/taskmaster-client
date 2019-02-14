@@ -13,7 +13,7 @@ class FormInput extends React.Component {
         <input
           {...formProps.input}
           autoComplete="off"
-          placeholder="Enter todo"
+          placeholder="Add a todo"
         />
       </div>
     );
