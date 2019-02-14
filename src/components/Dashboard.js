@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { Label } from "semantic-ui-react";
 
 import requireAuth from "../requireAuth";
 import Navbar from "./Navbar";
@@ -30,7 +31,8 @@ class Dashboard extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    category: state.category
+    category: state.category,
+    auth: state.auth
   };
 };
 export default connect(mapStateToProps)(requireAuth(Dashboard));

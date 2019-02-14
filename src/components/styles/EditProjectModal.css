@@ -1,6 +1,17 @@
 .color-choice {
   margin: 4px !important;
   cursor: pointer;
+  transition: all 0.4s !important;
+}
+
+.color-choice:hover {
+  transform: scale(1.2);
+}
+
+#active {
+  transform: scale(1.4) !important;
+  margin-left: 6px !important;
+  margin-right: 6px !important;
 }
 
 .modal-header {

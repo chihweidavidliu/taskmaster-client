@@ -9,8 +9,16 @@ class ColourChoiceLabel extends Component {
   }
 
   render() {
+    if(this.props.active === true) {
+      return <Label id="active" className="color-choice" circular color={this.props.color} onClick={this.handleClick} />
+    }
     return <Label className="color-choice" circular color={this.props.color} onClick={this.handleClick} />;
   }
 }
 
-export default connect(null, actions) (ColourChoiceLabel);
+const mapStateToProps = (state) => {
+  return {
+    projects: state.auth.projects
+  }
+};
+export default connect(mapStateToProps, actions) (ColourChoiceLabel);

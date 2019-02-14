@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Button, Header, Icon, Image, Modal, Label } from "semantic-ui-react";
+import { connect } from "react-redux";
 
 import ColourChoiceLabel from "./ColourChoiceLabel";
 import "./styles/EditProjectModal.css";
@@ -10,6 +11,16 @@ class EditProjectModal extends Component {
   close = () => this.setState({ open: false });
   show = () => this.setState({ open: true });
 
+  renderColorChoices() {
+    const colors = ["teal", "red", "orange", "yellow", "olive", "green", "blue", "violet", "purple", "pink", "brown", "grey", "black"];
+    return colors.map(color => {
+      // if the current color is the same as the label being rendered, set it as active
+      if(this.props.color === color) {
+        return <ColourChoiceLabel active={true} color={color} projectId={this.props.projectId} />
+      }
+      return <ColourChoiceLabel active={false} color={color} projectId={this.props.projectId} />
+    });
+  }
   render() {
     const { open } = this.state;
 
@@ -32,19 +43,7 @@ class EditProjectModal extends Component {
             <Header>Assign Colour</Header>
             <p>Choose a colour:</p>
             <div className="label-picker">
-              <ColourChoiceLabel color="teal" projectId={this.props.projectId} />
-              <ColourChoiceLabel color="red" projectId={this.props.projectId} />
-              <ColourChoiceLabel color="orange" projectId={this.props.projectId} />
-              <ColourChoiceLabel color="yellow" projectId={this.props.projectId} />
-              <ColourChoiceLabel color="olive" projectId={this.props.projectId} />
-              <ColourChoiceLabel color="green" projectId={this.props.projectId} />
-              <ColourChoiceLabel color="blue" projectId={this.props.projectId} />
-              <ColourChoiceLabel color="violet" projectId={this.props.projectId} />
-              <ColourChoiceLabel color="purple" projectId={this.props.projectId} />
-              <ColourChoiceLabel color="pink" projectId={this.props.projectId} />
-              <ColourChoiceLabel color="brown" projectId={this.props.projectId} />
-              <ColourChoiceLabel color="grey" projectId={this.props.projectId} />
-              <ColourChoiceLabel color="black" projectId={this.props.projectId} />
+              {this.renderColorChoices()}
             </div>
             <Header>Assign a Background Image</Header>
             <p>Choose a background image:</p>
@@ -54,4 +53,9 @@ class EditProjectModal extends Component {
     );
   }
 }
-export default EditProjectModal;
+const mapStateToProps = (state) => {
+  return {
+    projects: state.auth.projects
+  }
+}
+export default connect(mapStateToProps) (EditProjectModal);
