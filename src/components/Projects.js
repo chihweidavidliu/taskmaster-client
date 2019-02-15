@@ -34,7 +34,6 @@ class Projects extends Component {
       const { projects } = this.props.auth;
       return projects.map((project, index) => {
         if (this.state.editMode === true) {
-          console.log(project.color)
           return (
             <ProjectSortableItem
               editMode={this.state.editMode}
@@ -48,7 +47,6 @@ class Projects extends Component {
             />
           )
         } else {
-          console.log(project.color)
           return (
             <CategoryLink
               editMode={this.state.editMode}

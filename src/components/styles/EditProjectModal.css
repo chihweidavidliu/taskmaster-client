@@ -1,7 +1,7 @@
 .color-choice {
   margin: 4px !important;
   cursor: pointer;
-  transition: all 0.4s !important;
+  transition: all 0.3s !important;
 }
 
 .color-choice:hover {

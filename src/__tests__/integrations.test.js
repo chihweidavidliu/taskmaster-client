@@ -2,12 +2,10 @@ import React from "react";
 import moxios from "moxios";
 import { MemoryRouter } from "react-router-dom";
 import { mount } from "enzyme";
-import { Menu } from "semantic-ui-react";
 
 import Root from "../Root";
 import Dashboard from "../components/Dashboard";
 import Todo from "../components/Todo";
-import CategoryLink from "../components/CategoryLink";
 
 let wrapped;
 beforeEach(() => {
@@ -16,7 +14,7 @@ beforeEach(() => {
   const initialState = {
     auth: {
       _id: "5c5c6a960a759e145f1e24b5",
-      projects: [{ name: "Misc", color: "teal", iamge: null, _id: "dashfakjhfkahef"}]
+      projects: [{ name: "Misc", color: "teal", image: null, _id: "dashfakjhfkahef"}]
     },
     todos: [
       {

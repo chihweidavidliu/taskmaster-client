@@ -16,9 +16,9 @@ class EditProjectModal extends Component {
     return colors.map(color => {
       // if the current color is the same as the label being rendered, set it as active
       if(this.props.color === color) {
-        return <ColourChoiceLabel active={true} color={color} projectId={this.props.projectId} />
+        return <ColourChoiceLabel key={color} active={true} color={color} projectId={this.props.projectId} />
       }
-      return <ColourChoiceLabel active={false} color={color} projectId={this.props.projectId} />
+      return <ColourChoiceLabel key={color} active={false} color={color} projectId={this.props.projectId} />
     });
   }
   render() {
