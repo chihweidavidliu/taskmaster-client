@@ -9,14 +9,14 @@ import background4 from "../images/background4.jpg";
 import background5 from "../images/background5.jpg";
 import background6 from "../images/background6.jpg";
 
-
 class TodoContainer extends Component {
   render() {
     let styles;
-    if(this.props.auth && this.props.category && this.props.category !== "Inbox") {
-      const project = this.props.auth.projects.filter(project => project.name === this.props.category);
+    // determine background
+    if (this.props.auth && this.props.category && this.props.category !== "Inbox") {
+      const project = this.props.auth.projects.filter((project) => project.name === this.props.category);
       const backgroundImage = project[0].image;
-      if(backgroundImage === null) {
+      if (backgroundImage === null) {
         styles = { backgroundColor: "teal" };
       } else {
         const map = { background1, background2, background3, background4, background5, background6 };
@@ -30,17 +30,15 @@ class TodoContainer extends Component {
 
     return (
       <div className="twelve wide column todoContainer" style={styles}>
-        <div className="ui container">
-          {this.props.children}
-        </div>
+        <div className="ui container">{this.props.children}</div>
       </div>
-    )
+    );
   }
-};
+}
 const mapStateToProps = (state) => {
   return {
     auth: state.auth,
     category: state.category
-  }
+  };
 };
-export default connect(mapStateToProps) (TodoContainer);
+export default connect(mapStateToProps)(TodoContainer);

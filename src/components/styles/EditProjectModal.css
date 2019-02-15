@@ -19,3 +19,23 @@
   justify-content: space-between;
   align-items: center;
 }
+
+.background-picker {
+  display: flex;
+  justify-content: space-around;
+  align-content:space-between;
+  flex-wrap: wrap;
+}
+
+.background-picker img {
+  margin-right: 10px;
+  margin-bottom: 10px;
+  height: 60px;
+  width: 100px !important;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.background-picker img:hover {
+  transform: scale(1.2);
+}

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Button, Header, Icon, Image, Modal, Label } from "semantic-ui-react";
 import { connect } from "react-redux";
 
+import BackgroundChoice from "./BackgroundChoice";
 import ColourChoiceLabel from "./ColourChoiceLabel";
 import "./styles/EditProjectModal.css";
 
@@ -21,6 +22,21 @@ class EditProjectModal extends Component {
       return <ColourChoiceLabel key={color} active={false} color={color} projectId={this.props.projectId} />
     });
   }
+
+  renderBackgroundChoices() {
+    const backgrounds = ["background1", "background2", "background3", "background4", "background5", "background6"];
+    return backgrounds.map(background => {
+      return (
+        <BackgroundChoice
+          projectId={this.props.projectId}
+          alt={background}
+          backgroundName={background}
+          key={background}
+        />
+      )
+    });
+  }
+
   render() {
     const { open } = this.state;
 
@@ -47,6 +63,9 @@ class EditProjectModal extends Component {
             </div>
             <Header>Assign a Background Image</Header>
             <p>Choose a background image:</p>
+            <div className="background-picker">
+              {this.renderBackgroundChoices()}
+            </div>
           </Modal.Description>
         </Modal.Content>
       </Modal>

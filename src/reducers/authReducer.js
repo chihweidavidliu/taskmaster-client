@@ -1,4 +1,5 @@
 import {
+  EDIT_PROJECT_IMAGE,
   EDIT_PROJECT_COLOR,
   UPDATE_PROJECT_ORDER,
   EDIT_PROJECT_NAME,
@@ -20,6 +21,8 @@ export default (state = null, action) => {
     case UPDATE_PROJECT_ORDER:
       return action.payload;
     case EDIT_PROJECT_COLOR:
+      return action.payload;
+    case EDIT_PROJECT_IMAGE:
       return action.payload;
     default:
       return state;
