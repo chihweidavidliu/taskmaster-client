@@ -23,11 +23,11 @@ class CategoryLink extends Component {
 
   handleBlur = async (e) => {
     const newName = e.target.innerText;
-    await this.props.editProjectName(this.props.name, newName); // send new text to state onBlur
-    this.setState({ contentEditable: false });
-    this.props.fetchTodoCount();
-    this.props.setCategory(newName);
-    this.props.fetchTodos(newName);
+    await this.props.editProjectName(this.props.projectId, this.props.name, newName); // send new text to state onBlur
+    await this.setState({ contentEditable: false });
+    await this.props.setCategory(newName);
+    await this.props.fetchTodoCount();
+    await this.props.fetchTodos(newName);
   };
 
   handleKeyPress = (e) => {

@@ -44,8 +44,8 @@ export const deleteProject = (project) => async (dispatch) => {
   dispatch({ type: DELETE_PROJECT, payload: response.data });
 };
 
-export const editProjectName = (name, newName) => async (dispatch) => {
-  const response = await axios.patch(`/api/current_user/editProjectName/${name}`, { newName: newName });
+export const editProjectName = (id, oldName, newName) => async (dispatch) => {
+  const response = await axios.patch(`/api/current_user/editProjectName/${id}`, { oldName: oldName, newName: newName });
   dispatch({ type: EDIT_PROJECT_NAME, payload: response.data });
 };
 
