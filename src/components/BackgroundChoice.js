@@ -17,6 +17,11 @@ class BackgroundChoice extends Component {
 
   render() {
     const map = { background1, background2, background3, background4, background5, background6 }
+    if(this.props.active === true) {
+      return (
+          <img alt={this.props.alt} className="active-image" src={map[this.props.backgroundName]} onClick={this.handleClick} />
+      );
+    }
     return (
         <img alt={this.props.alt} src={map[this.props.backgroundName]} onClick={this.handleClick} />
     );

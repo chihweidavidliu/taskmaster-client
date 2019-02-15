@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Label } from "semantic-ui-react";
 
 import requireAuth from "../requireAuth";
 import Navbar from "./Navbar";

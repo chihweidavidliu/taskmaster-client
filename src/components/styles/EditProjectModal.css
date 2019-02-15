@@ -14,6 +14,10 @@
   margin-right: 6px !important;
 }
 
+.active-image {
+  transform: scale(1.3);
+}
+
 .modal-header {
   display: flex !important;
   justify-content: space-between;
@@ -34,8 +38,4 @@
   width: 100px !important;
   cursor: pointer;
   transition: all 0.3s;
-}
-
-.background-picker img:hover {
-  transform: scale(1.2);
 }

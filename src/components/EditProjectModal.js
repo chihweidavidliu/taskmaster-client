@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Button, Header, Icon, Image, Modal, Label } from "semantic-ui-react";
+import { Button, Header, Icon, Modal, Label } from "semantic-ui-react";
 import { connect } from "react-redux";
 
 import BackgroundChoice from "./BackgroundChoice";
@@ -25,9 +25,22 @@ class EditProjectModal extends Component {
 
   renderBackgroundChoices() {
     const backgrounds = ["background1", "background2", "background3", "background4", "background5", "background6"];
+    const { projects } = this.props;
+    const currentProject = projects.filter(project => project._id === this.props.projectId);
     return backgrounds.map(background => {
+      if(currentProject[0].image === background) {
+        return (
+          <BackgroundChoice
+            active={true}
+            projectId={this.props.projectId}
+            alt={background}
+            backgroundName={background}
+            key={background}
+          />)
+      }
       return (
         <BackgroundChoice
+          active={false}
           projectId={this.props.projectId}
           alt={background}
           backgroundName={background}
