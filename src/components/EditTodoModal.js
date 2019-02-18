@@ -24,7 +24,11 @@ class EditTodoModal extends Component {
             key={project._id}
             name={project.name}
             active={project.name === this.props.category}
-            onClick={() => this.handleItemClick(project.name)}
+            onClick={() => {
+              if(project.name !== this.props.category) {
+                this.handleItemClick(project.name)
+              }
+            }}
             >
             <Label empty={true} circular color={project.color} style={{ marginRight: "8px" }} />
             {project.name}

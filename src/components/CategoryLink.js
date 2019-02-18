@@ -13,7 +13,8 @@ class CategoryLink extends Component {
   state = { contentEditable: false };
 
   handleItemClick = (e, { name }) => {
-    if (this.props.editMode === false) {
+    if (this.props.editMode === false && this.props.activeItem !== this.props.name) {
+      // only do this if editMode is off and the link is not that of the already selected project
       this.props.setCategory(name);
       this.props.fetchTodos(name);
     } else if (this.props.editMode === true) {
