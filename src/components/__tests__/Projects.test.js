@@ -3,10 +3,10 @@ import { mount } from "enzyme";
 import { Input, Button } from "semantic-ui-react";
 import moxios from "moxios";
 
-import Root from "../../Root";
-import Projects from "../Projects";
-import CategoryLink from "../CategoryLink";
-import DeleteButton from "../DeleteButton";
+import Root from "Root";
+import Projects from "components/Dashboard/Sidebar/Projects";
+import CategoryLink from "components/Dashboard/Sidebar/CategoryLink";
+import DeleteButton from "components/Dashboard/DeleteButton";
 
 let wrapped;
 beforeEach(() => {

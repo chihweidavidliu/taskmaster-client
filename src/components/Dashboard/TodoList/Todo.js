@@ -1,10 +1,10 @@
 import React from "react";
 import { SortableElement } from "react-sortable-hoc";
 
-import DeleteButton from "./DeleteButton";
-import TodoText from "./TodoText";
-import DragHandle from "./DragHandle";
-import EditTodoModal from "./EditTodoModal";
+import DeleteButton from "components/Dashboard/DeleteButton";
+import TodoText from "components/Dashboard/TodoList/TodoText";
+import DragHandle from "components/Dashboard/DragHandle";
+import EditTodoModal from "components/Dashboard/TodoList/EditTodoModal";
 
 // define a component that is a sortable element using react-sortables SortableElement function
 // pass id to DeleteButton so that when delete butotn is clicked, it has the id of the todo and can delete the appropriate one from the state

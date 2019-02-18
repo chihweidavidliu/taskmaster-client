@@ -1,13 +1,13 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
-import * as actions from "../actions";
-import background1 from "../images/background1.jpg";
-import background2 from "../images/background2.jpg";
-import background3 from "../images/background3.jpg";
-import background4 from "../images/background4.jpg";
-import background5 from "../images/background5.jpg";
-import background6 from "../images/background6.jpg";
+import * as actions from "actions";
+import background1 from "images/background1.jpg";
+import background2 from "images/background2.jpg";
+import background3 from "images/background3.jpg";
+import background4 from "images/background4.jpg";
+import background5 from "images/background5.jpg";
+import background6 from "images/background6.jpg";
 
 class BackgroundChoice extends Component {
   handleClick = () => {

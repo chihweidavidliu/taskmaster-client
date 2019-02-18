@@ -3,8 +3,8 @@ import { mount } from "enzyme";
 import { MemoryRouter } from "react-router-dom";
 import moxios from "moxios";
 
-import Root from "../../Root";
-import DeleteButton from "../DeleteButton";
+import Root from "Root";
+import DeleteButton from "components/Dashboard/DeleteButton";
 
 let wrapped;
 beforeEach(() => {

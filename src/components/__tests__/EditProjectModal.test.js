@@ -3,8 +3,8 @@ import { mount } from "enzyme";
 import moxios from "moxios";
 import { Modal } from "semantic-ui-react";
 
-import Root from "../../Root";
-import EditProjectModal from "../EditProjectModal";
+import Root from "Root";
+import EditProjectModal from "components/Dashboard/Sidebar/EditProjectModal";
 
 let wrapped;
 beforeEach(() => {

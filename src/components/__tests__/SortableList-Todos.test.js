@@ -2,11 +2,11 @@ import React from "react";
 import { mount } from "enzyme";
 import { MemoryRouter } from "react-router-dom";
 
-import Root from "../../Root";
-import SortableList from "../SortableList";
-import Todo from "../Todo";
-import DeleteButton from "../DeleteButton";
-import TodoText from "../TodoText";
+import Root from "Root";
+import SortableList from "components/Dashboard/TodoList/SortableList";
+import Todo from "components/Dashboard/TodoList/Todo";
+import DeleteButton from "components/Dashboard/DeleteButton";
+import TodoText from "components/Dashboard/TodoList/TodoText";
 
 let wrapped;
 beforeEach(() => {

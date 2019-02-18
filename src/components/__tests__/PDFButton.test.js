@@ -2,8 +2,8 @@ import React from "react";
 import { mount } from "enzyme";
 import { Menu } from "semantic-ui-react";
 
-import PDFButton from "../PDFButton";
-import Root from "../../Root";
+import PDFButton from "components/Dashboard/Sidebar/PDFButton";
+import Root from "Root";
 
 import pdfMake from "pdfmake/build/pdfmake";
 import pdfFonts from "pdfmake/build/vfs_fonts";

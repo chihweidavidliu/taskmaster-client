@@ -2,8 +2,8 @@ import React from "react";
 import { Field, reduxForm } from "redux-form";
 import { connect } from "react-redux";
 
-import * as actions from "../actions";
-import "./styles/FormInput.css";
+import * as actions from "actions";
+import "components/styles/FormInput.css";
 
 class FormInput extends React.Component {
   renderInput = (formProps) => {

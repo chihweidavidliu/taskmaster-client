@@ -2,10 +2,10 @@ import React from "react";
 import { mount } from "enzyme";
 import { MemoryRouter } from "react-router-dom";
 
-import Root from "../../Root";
-import TodoList from "../TodoList";
-import Todo from "../Todo";
-import SortableList from "../SortableList";
+import Root from "Root";
+import TodoList from "components/Dashboard/TodoList/TodoList";
+import Todo from "components/Dashboard/TodoList/Todo";
+import SortableList from "components/Dashboard/TodoList/SortableList";
 
 let wrapped;
 beforeEach(() => {

@@ -2,12 +2,12 @@ import React, { Component } from "react";
 import { Menu, Label } from "semantic-ui-react";
 import { connect } from "react-redux";
 
-import "./styles/CategoryLink.css";
-import DeleteButton from "./DeleteButton";
-import DragHandle from "./DragHandle";
-import EditProjectModal from "./EditProjectModal";
+import "components/styles/CategoryLink.css";
+import DeleteButton from "components/Dashboard/DeleteButton";
+import DragHandle from "components/Dashboard/DragHandle";
+import EditProjectModal from "components/Dashboard/Sidebar/EditProjectModal";
 
-import * as actions from "../actions";
+import * as actions from "actions";
 
 class CategoryLink extends Component {
   state = { contentEditable: false };

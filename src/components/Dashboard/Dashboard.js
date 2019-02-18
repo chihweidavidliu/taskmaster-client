@@ -1,13 +1,13 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
-import requireAuth from "../requireAuth";
-import Navbar from "./Navbar";
-import Sidebar from "./Sidebar";
-import TodoContainer from "./TodoContainer";
-import FormInput from "./FormInput";
-import TodoList from "./TodoList";
-import "./styles/Dashboard.css";
+import requireAuth from "requireAuth";
+import Navbar from "components/Dashboard/Navbar";
+import Sidebar from "components/Dashboard/Sidebar/Sidebar";
+import TodoContainer from "components/Dashboard/TodoList/TodoContainer";
+import FormInput from "components/Dashboard/TodoList/FormInput";
+import TodoList from "components/Dashboard/TodoList/TodoList";
+import "components/styles/Dashboard.css";
 
 class Dashboard extends Component {
   render() {

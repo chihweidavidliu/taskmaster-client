@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 
 import BackgroundChoice from "./BackgroundChoice";
 import ColourChoiceLabel from "./ColourChoiceLabel";
-import "./styles/EditProjectModal.css";
+import "components/styles/EditProjectModal.css";
 
 class EditProjectModal extends Component {
   state = { open: false };

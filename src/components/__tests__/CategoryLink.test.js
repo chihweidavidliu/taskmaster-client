@@ -3,8 +3,8 @@ import { mount } from "enzyme";
 import { MemoryRouter } from "react-router-dom";
 import { Menu } from "semantic-ui-react";
 
-import Root from "../../Root";
-import CategoryLink from "../CategoryLink";
+import Root from "Root";
+import CategoryLink from "components/Dashboard/Sidebar/CategoryLink";
 
 let wrapped;
 

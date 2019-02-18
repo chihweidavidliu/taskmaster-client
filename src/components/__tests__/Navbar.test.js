@@ -2,8 +2,8 @@ import React from "react";
 import { mount } from "enzyme";
 import { MemoryRouter, Link } from "react-router-dom";
 
-import Root from "../../Root";
-import Navbar from "../Navbar";
+import Root from "Root";
+import Navbar from "components/Dashboard/Navbar";
 
 let wrapped;
 beforeEach(() => {

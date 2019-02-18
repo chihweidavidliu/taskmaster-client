@@ -3,9 +3,9 @@ import moxios from "moxios";
 import { MemoryRouter } from "react-router-dom";
 import { mount } from "enzyme";
 
-import Root from "../Root";
-import Dashboard from "../components/Dashboard";
-import Todo from "../components/Todo";
+import Root from "Root";
+import Dashboard from "components/Dashboard/Dashboard";
+import Todo from "components/Dashboard/TodoList/Todo";
 
 let wrapped;
 beforeEach(() => {

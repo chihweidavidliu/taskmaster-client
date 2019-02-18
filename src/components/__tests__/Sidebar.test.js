@@ -3,9 +3,9 @@ import { mount } from "enzyme";
 import { MemoryRouter } from "react-router-dom";
 import { Menu } from "semantic-ui-react";
 
-import Root from "../../Root";
-import Sidebar from "../Sidebar";
-import Projects from "../Projects";
+import Root from "Root";
+import Sidebar from "components/Dashboard/Sidebar/Sidebar";
+import Projects from "components/Dashboard/Sidebar/Projects";
 
 let wrapped;
 beforeEach(() => {

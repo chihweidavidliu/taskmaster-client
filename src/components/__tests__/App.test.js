@@ -2,8 +2,8 @@ import React from "react";
 import { mount } from "enzyme";
 import { Router, Route } from "react-router-dom";
 
-import Root from "../../Root";
-import App from "../App";
+import Root from "Root";
+import App from "components/App";
 
 let wrapped;
 

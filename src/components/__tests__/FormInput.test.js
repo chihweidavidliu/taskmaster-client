@@ -1,8 +1,8 @@
 import React from "react";
 import { mount } from "enzyme";
 import moxios from "moxios";
-import Root from "../../Root";
-import FormInput from "../FormInput";
+import Root from "Root";
+import FormInput from "components/Dashboard/TodoList/FormInput";
 
 let wrapped;
 beforeEach(() => {

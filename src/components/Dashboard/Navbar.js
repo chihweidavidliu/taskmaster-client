@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom"
 import { connect } from "react-redux";
 
-import * as actions from "../actions";
-import "./styles/Navbar.css"
+import * as actions from "actions";
+import "components/styles/Navbar.css"
 
 
 class Navbar extends Component {

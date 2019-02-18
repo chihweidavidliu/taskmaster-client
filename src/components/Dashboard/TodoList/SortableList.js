@@ -1,7 +1,7 @@
 import React from "react";
 import { SortableContainer } from "react-sortable-hoc";
 import { connect } from "react-redux";
-import Todo from "./Todo";
+import Todo from "components/Dashboard/TodoList/Todo";
 
 // create a react-sortable container for the sortable elements
 const SortableList = SortableContainer((props) => {

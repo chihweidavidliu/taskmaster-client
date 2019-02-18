@@ -1,9 +1,9 @@
 import React from "react";
 import { connect } from "react-redux";
 
-import * as actions from "../actions";
-import SortableList from "./SortableList";
-import "./styles/TodoList.css";
+import * as actions from "actions";
+import SortableList from "components/Dashboard/TodoList/SortableList";
+import "components/styles/TodoList.css";
 
 class TodoList extends React.Component {
   componentDidMount() {

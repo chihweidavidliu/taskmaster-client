@@ -2,11 +2,11 @@ import React, { Component } from "react";
 import { Menu } from "semantic-ui-react";
 import { connect } from "react-redux";
 
-import * as actions from "../actions";
-import "./styles/Sidebar.css";
-import CategoryLink from "./CategoryLink";
-import Projects from "./Projects";
-import PDFButton from "./PDFButton";
+import * as actions from "actions";
+import "components/styles/Sidebar.css";
+import CategoryLink from "components/Dashboard/Sidebar/CategoryLink";
+import Projects from "components/Dashboard/Sidebar/Projects";
+import PDFButton from "components/Dashboard/Sidebar/PDFButton";
 
 class SideBar extends Component {
   state = {};

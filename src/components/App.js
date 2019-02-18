@@ -2,10 +2,10 @@ import React, { Component } from "react";
 import { Router, Route } from "react-router-dom";
 import { connect } from "react-redux";
 
-import history from "../history";
-import * as actions from "../actions";
-import LandingPage from "./LandingPage";
-import Dashboard from "./Dashboard";
+import history from "history.js";
+import * as actions from "actions";
+import LandingPage from "components/LandingPage";
+import Dashboard from "components/Dashboard/Dashboard";
 
 class App extends Component {
   async componentDidMount() {

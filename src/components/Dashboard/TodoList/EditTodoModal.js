@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Button, Header, Modal, Menu, Label, Icon } from "semantic-ui-react";
-import "./styles/EditTodoModal.css";
-import * as actions from "../actions";
+import "components/styles/EditTodoModal.css";
+import * as actions from "actions";
 
 class EditTodoModal extends Component {
   state = { open: false };

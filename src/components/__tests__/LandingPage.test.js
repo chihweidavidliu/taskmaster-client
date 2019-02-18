@@ -1,7 +1,7 @@
 import React from "react";
 import { mount } from "enzyme";
 import { MemoryRouter, Link } from "react-router-dom";
-import LandingPage from "../LandingPage";
+import LandingPage from "components/LandingPage";
 
 let wrapped;
 beforeEach(() => {

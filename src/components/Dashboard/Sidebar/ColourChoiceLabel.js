@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Label } from "semantic-ui-react";
 import { connect } from "react-redux"
-import * as actions from "../actions";
+import * as actions from "actions";
 
 class ColourChoiceLabel extends Component {
   handleClick = () => {

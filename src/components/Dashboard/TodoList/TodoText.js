@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 
-import { editTodoText } from "../actions";
+import { editTodoText } from "actions";
 
 class TodoText extends React.Component {
   state = { contentEditable: false }

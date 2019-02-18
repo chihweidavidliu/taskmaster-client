@@ -4,9 +4,9 @@ import { Field, reduxForm } from "redux-form";
 import { Menu, Input, Button } from "semantic-ui-react";
 import { sortableContainer, sortableElement } from "react-sortable-hoc";
 
-import "./styles/Projects.css";
-import CategoryLink from "./CategoryLink";
-import * as actions from "../actions";
+import "components/styles/Projects.css";
+import CategoryLink from "components/Dashboard/Sidebar/CategoryLink";
+import * as actions from "actions";
 
 // Enhance components to make them sortable
 const ProjectSortableItem = sortableElement((props) => (
