@@ -13,7 +13,8 @@ import {
   ADD_TODO,
   UPDATE_ORDER,
   DELETE_TODO,
-  EDIT_TODO_TEXT
+  EDIT_TODO_TEXT,
+  UPDATE_TODO_PROJECT
 } from "./types";
 
 export const fetchUser = () => async (dispatch, getState) => {
@@ -54,13 +55,16 @@ export const editProjectColor = (id, color) => async (dispatch) => {
   dispatch({ type: EDIT_PROJECT_COLOR, payload: response.data });
 };
 
-export const editProjectImage= (id, image) => async (dispatch) => {
+export const editProjectImage = (id, image) => async (dispatch) => {
   const response = await axios.patch(`/api/current_user/editProjectImage/${id}`, { image: image });
   dispatch({ type: EDIT_PROJECT_IMAGE, payload: response.data });
 };
 
 export const updateProjectOrder = (oldIndex, newIndex) => async (dispatch) => {
-  const response = await axios.patch("/api/current_user/updateProjectOrder", { oldIndex: oldIndex, newIndex: newIndex});
+  const response = await axios.patch("/api/current_user/updateProjectOrder", {
+    oldIndex: oldIndex,
+    newIndex: newIndex
+  });
   dispatch({ type: UPDATE_PROJECT_ORDER, payload: response.data });
 };
 
@@ -87,6 +91,15 @@ export const updateTodoOrder = (oldIndex, newIndex) => {
     type: UPDATE_ORDER,
     payload: { oldIndex: oldIndex, newIndex: newIndex }
   };
+};
+
+export const updateTodoProject = (id, oldProject, newProject, indexInList) => async (dispatch) => {
+  const response = await axios.patch(`/api/todos/updateProject/${id}`, {
+    oldProject: oldProject,
+    newProject: newProject,
+    indexInList: indexInList
+  });
+  dispatch({ type: UPDATE_TODO_PROJECT, payload: response.data.todos });
 };
 
 export const deleteTodo = (id) => async (dispatch) => {

@@ -27,6 +27,7 @@
 
 #todoList {
   max-height: 55vh;
+  padding: 5px;
   overflow-y: auto;
   overflow-x: hidden;
 }

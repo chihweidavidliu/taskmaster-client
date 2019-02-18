@@ -1,4 +1,4 @@
-import { FETCH_TODOS, ADD_TODO, UPDATE_ORDER, DELETE_TODO, EDIT_TODO_TEXT } from "../actions/types";
+import { UPDATE_TODO_PROJECT, FETCH_TODOS, ADD_TODO, UPDATE_ORDER, DELETE_TODO, EDIT_TODO_TEXT } from "../actions/types";
 import axios from "axios";
 import { arrayMove } from "../arrayMove";
 
@@ -44,6 +44,8 @@ export default (state = [], action) => {
           }
         });
         return updatedTodos;
+    case UPDATE_TODO_PROJECT:
+      return action.payload.sort((a, b) => a.indexInList - b.indexInList);
     default:
       return state;
     }

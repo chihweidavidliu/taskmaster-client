@@ -1,6 +1,6 @@
 import React from "react";
 import { mount } from "enzyme";
-import { Dropdown } from "semantic-ui-react";
+import { Menu } from "semantic-ui-react";
 
 import PDFButton from "../PDFButton";
 import Root from "../../Root";
@@ -28,14 +28,14 @@ afterEach(() => {
 });
 
 it("should render a button", () => {
-  expect(wrapped.find(Dropdown.Item).length).toEqual(1);
+  expect(wrapped.find(Menu.Item).length).toEqual(1);
 });
 
 it("should create a pdf on click", () => {
   // create a spy on the pdfMake object and the createPdf method
   const createPdf = jest.spyOn(pdfMake, "createPdf");
   // simulate click on pdf button
-  wrapped.find(Dropdown.Item).simulate("click");
+  wrapped.find(Menu.Item).simulate("click");
   wrapped.update();
 
   // expect the spy to say that the method has been called

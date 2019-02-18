@@ -74,7 +74,7 @@ class EditProjectModal extends Component {
             <div className="label-picker">
               {this.renderColorChoices()}
             </div>
-            <Header>Assign a Background Image</Header>
+            <Header>Assign Background Image</Header>
             <p>Choose a background image:</p>
             <div className="background-picker">
               {this.renderBackgroundChoices()}
