@@ -1,14 +1,17 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Button, Header, Modal, Menu, Label, Icon } from "semantic-ui-react";
+import DateTimePicker from 'react-datetime-picker';
+
 import "components/styles/EditTodoModal.css";
 import * as actions from "actions";
 
 class EditTodoModal extends Component {
-  state = { open: false };
+  state = { open: false, date: new Date() };
 
+  onDateChange = date => this.setState({ date })
   close = () => this.setState({ open: false });
-  show = () => this.setState({ open: true });
+  show = () => this.setState({ open: true, date: new Date() });
 
   handleItemClick = async (newProject) => {
     await this.props.updateTodoProject(this.props.todoId, this.props.category, newProject, this.props.indexInList);
@@ -67,6 +70,13 @@ class EditTodoModal extends Component {
             </Menu>
             <Header>Assign due date</Header>
             <p>Choose a due date:</p>
+            <DateTimePicker
+              disableClock={true}
+              minDate={new Date()}
+              clearIcon={null}
+              onChange={this.onDateChange}
+              value={this.state.date}
+            />
           </Modal.Description>
         </Modal.Content>
       </Modal>

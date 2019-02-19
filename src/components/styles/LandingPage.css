@@ -1,6 +1,5 @@
 .landingPage {
   width: 100vw;
-  min-width: 400px;
 }
 
 .landingPage h1 {
@@ -111,7 +110,6 @@
 
 @media only screen and (max-width: 600px) {
   .interface-screenshot {
-    height: 300px;
-    width: 450px;
+    width: 95vw;
   }
 }
