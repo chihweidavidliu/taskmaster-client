@@ -1,5 +1,7 @@
 .landingPage {
   width: 100vw;
+  min-width: 300px;
+  overflow-x: hidden;
 }
 
 .landingPage h1 {
@@ -105,11 +107,40 @@
     flex-direction: column;
     height: 23vh;
   }
-
 }
 
 @media only screen and (max-width: 600px) {
   .interface-screenshot {
     width: 95vw;
+  }
+
+  .messageContainer {
+    height: 65vh;
+  }
+
+  .screenshotContainer {
+    height: 60vh;
+  }
+
+}
+
+/* portrait mode for modern smartphones */
+@media only screen and (max-height: 414px) {
+  .navbar {
+    flex-direction: column;
+    height: 37vh;
+    padding: 10px;
+  }
+
+  .messageContainer {
+    height: 85vh;
+  }
+
+  .message {
+    margin: 1vw;
+  }
+
+  .screenshotContainer {
+    height: 85vh;
   }
 }
