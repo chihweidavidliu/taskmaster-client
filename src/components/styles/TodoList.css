@@ -56,6 +56,12 @@
 
 .todo-item .content {
   display: flex;
+  align-items: baseline;
+}
+
+.todo-item .project-label {
+  margin-right: 8px;
+  margin-left: 5px !important;
 }
 
 .todo-item .header {

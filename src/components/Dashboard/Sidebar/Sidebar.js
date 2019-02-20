@@ -7,6 +7,7 @@ import "components/styles/Sidebar.css";
 import CategoryLink from "components/Dashboard/Sidebar/CategoryLink";
 import Projects from "components/Dashboard/Sidebar/Projects";
 import PDFButton from "components/Dashboard/Sidebar/PDFButton";
+import Agenda from "components/Dashboard/Sidebar/Agenda";
 
 class SideBar extends Component {
   state = {};
@@ -19,6 +20,7 @@ class SideBar extends Component {
       <div className="four wide column sidebar-container">
         <Menu fluid secondary vertical id="sidebar">
           <CategoryLink name="Inbox" editMode={false} />
+          <Agenda name="Agenda" activeItem={this.props.activeItem} />
           <Projects setting="sidebar" />
           <Menu.Item>
             Tools

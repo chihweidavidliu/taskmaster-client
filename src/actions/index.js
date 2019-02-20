@@ -1,5 +1,6 @@
 import axios from "axios";
 import {
+  FETCH_TODOS_BY_DUEDATE,
   EDIT_DUEDATE,
   EDIT_PROJECT_IMAGE,
   EDIT_PROJECT_COLOR,
@@ -75,6 +76,12 @@ export const fetchTodos = (category) => async (dispatch) => {
   const response = await axios.get(`/api/todos/filter/${category}`);
   const todos = response.data.todos;
   dispatch({ type: FETCH_TODOS, payload: todos });
+};
+
+export const fetchTodosByDueDate = () => async (dispatch) => {
+  const response = await axios.get("/api/todos/filter/dueDate");
+  const { todos } = response.data;
+  dispatch({ type: FETCH_TODOS_BY_DUEDATE, payload: todos });
 };
 
 export const fetchTodoCount = () => async (dispatch) => {
