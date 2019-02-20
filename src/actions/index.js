@@ -1,5 +1,6 @@
 import axios from "axios";
 import {
+  EDIT_DUEDATE,
   EDIT_PROJECT_IMAGE,
   EDIT_PROJECT_COLOR,
   UPDATE_PROJECT_ORDER,
@@ -110,4 +111,9 @@ export const deleteTodo = (id) => async (dispatch) => {
 export const editTodoText = (idToEdit, newText) => async (dispatch) => {
   const response = await axios.patch(`api/todos/${idToEdit}`, { text: newText });
   dispatch({ type: EDIT_TODO_TEXT, payload: response.data.todo });
+};
+
+export const editDueDate = (idToEdit, dueDate) => async (dispatch) => {
+  const response = await axios.patch(`api/todos/${idToEdit}`, { dueDate: dueDate });
+  dispatch({ type: EDIT_DUEDATE, payload: response.data.todo });
 };

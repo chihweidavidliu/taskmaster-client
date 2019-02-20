@@ -1,4 +1,4 @@
-import { UPDATE_TODO_PROJECT, FETCH_TODOS, ADD_TODO, UPDATE_ORDER, DELETE_TODO, EDIT_TODO_TEXT } from "../actions/types";
+import { UPDATE_TODO_PROJECT, FETCH_TODOS, ADD_TODO, UPDATE_ORDER, DELETE_TODO, EDIT_TODO_TEXT, EDIT_DUEDATE } from "../actions/types";
 import axios from "axios";
 import { arrayMove } from "../arrayMove";
 
@@ -44,6 +44,15 @@ export default (state = [], action) => {
           }
         });
         return updatedTodos;
+    case EDIT_DUEDATE:
+      return state.map(todo => {
+        if(todo._id === action.payload._id) {
+          todo.dueDate = action.payload.dueDate;
+          return todo;
+        } else {
+          return todo;
+        }
+      });
     case UPDATE_TODO_PROJECT:
       return action.payload.sort((a, b) => a.indexInList - b.indexInList);
     default:

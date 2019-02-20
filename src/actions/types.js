@@ -6,6 +6,7 @@ export const UPDATE_ORDER = "UPDATE_ORDER";
 export const DELETE_TODO = "DELETE_TODO";
 export const CLEAR_ALL = "CLEAR_ALL";
 export const EDIT_TODO_TEXT = "EDIT_TODO_TEXT";
+export const EDIT_DUEDATE = "EDIT_DUEDATE";
 export const TRIGGER_SCALE = "TRIGGER_SCALE";
 export const REVERSE_SCALE = "REVERSE_SCALE";
 export const SET_CATEGORY = "SET_CATEGORY;";

@@ -1,3 +1,31 @@
 #project-picker {
   cursor: pointer;
 }
+
+.dueDate-active {
+   background-color: #49A99E;
+   color: white;
+   border-radius: 3px;
+   padding: 2px;
+}
+
+.dueDate-active input {
+  color: white !important;
+}
+
+.dueDate-active svg {
+  color: white !important;
+}
+
+.dueDate-active .react-datetime-picker__wrapper {
+  border: none !important;
+}
+
+.react-datetime-picker__wrapper {
+  border-radius: 3px !important;
+  padding: 3px;
+}
+
+.clear-dueDate {
+  margin-left: 10px !important;
+}

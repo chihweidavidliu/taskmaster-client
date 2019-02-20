@@ -7,11 +7,20 @@ import "components/styles/EditTodoModal.css";
 import * as actions from "actions";
 
 class EditTodoModal extends Component {
-  state = { open: false, date: new Date() };
+  state = { open: false };
 
-  onDateChange = date => this.setState({ date })
   close = () => this.setState({ open: false });
-  show = () => this.setState({ open: true, date: new Date() });
+  show = () => {
+    this.setState({ open: true })
+  };
+
+  onDateChange = date => {
+    this.props.editDueDate(this.props.todoId, date);
+  }
+
+  handleClearDate = () => {
+    this.props.editDueDate(this.props.todoId, null);
+  }
 
   handleItemClick = async (newProject) => {
     await this.props.updateTodoProject(this.props.todoId, this.props.category, newProject, this.props.indexInList);
@@ -41,8 +50,32 @@ class EditTodoModal extends Component {
     }
   }
 
+  renderDateMessage() {
+    if(this.props.dueDate !== null) {
+      return <p>Currently selected due date (click to change): </p>
+    }
+    return <p>No due date selected. Choose a due date: </p>
+  }
+
+  renderClearDueDate() {
+    if(this.props.dueDate !== null) {
+      return <button className="ui mini compact button clear-dueDate" onClick={this.handleClearDate}>Clear due date</button>
+    }
+  }
+
   render() {
     const { open } = this.state;
+    let determineDateStyle;
+    let date;
+    if(this.props.dueDate !== null) {
+      determineDateStyle = "dueDate-active"
+      date = new Date(this.props.dueDate);
+    } else {
+      determineDateStyle = "dueDate-inactive"
+      date = new Date();
+    }
+
+
     return (
       <Modal
         trigger={
@@ -69,14 +102,19 @@ class EditTodoModal extends Component {
               {this.renderProjects()}
             </Menu>
             <Header>Assign due date</Header>
-            <p>Choose a due date:</p>
-            <DateTimePicker
-              disableClock={true}
-              minDate={new Date()}
-              clearIcon={null}
-              onChange={this.onDateChange}
-              value={this.state.date}
-            />
+            {this.renderDateMessage()}
+            <div className="date-picker">
+              <DateTimePicker
+                disableClock={true}
+                calendarIcon={null}
+                minDate={new Date()}
+                clearIcon={null}
+                onChange={this.onDateChange}
+                value={date}
+                className={determineDateStyle}
+              />
+              {this.renderClearDueDate()}
+            </div>
           </Modal.Description>
         </Modal.Content>
       </Modal>
