@@ -14,8 +14,12 @@ class EditTodoModal extends Component {
     this.setState({ open: true })
   };
 
-  onDateChange = date => {
-    this.props.editDueDate(this.props.todoId, date);
+  onDateChange = async date => {
+    await this.props.editDueDate(this.props.todoId, date);
+    // update order if in Agenda view
+    if(this.props.currentCategory === "Agenda") {
+      this.props.fetchTodosByDueDate();
+    }
   }
 
   handleClearDate = () => {
@@ -124,7 +128,8 @@ class EditTodoModal extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    auth: state.auth
+    auth: state.auth,
+    currentCategory: state.category
   };
 };
 

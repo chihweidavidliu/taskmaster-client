@@ -20,7 +20,7 @@ class Agenda extends Component {
       >
         <div className="project-contents">
         {this.props.name}
-        <Label circular color={false} style={{ marginRight: "12px" }}>
+        <Label circular style={{ marginRight: "12px" }}>
           {this.props.numOfTodos}
         </Label>
         </div>
