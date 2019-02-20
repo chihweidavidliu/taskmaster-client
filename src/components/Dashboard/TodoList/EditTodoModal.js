@@ -17,7 +17,7 @@ class EditTodoModal extends Component {
   onDateChange = async date => {
     await this.props.editDueDate(this.props.todoId, date);
     // update order if in Agenda view
-    if(this.props.currentCategory === "Agenda") {
+    if(this.props.currentView === "Agenda") {
       this.props.fetchTodosByDueDate();
     }
   }
@@ -129,7 +129,7 @@ class EditTodoModal extends Component {
 const mapStateToProps = (state) => {
   return {
     auth: state.auth,
-    currentCategory: state.category
+    currentView: state.category
   };
 };
 

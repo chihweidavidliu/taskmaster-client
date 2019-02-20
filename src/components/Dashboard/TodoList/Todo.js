@@ -15,7 +15,7 @@ import DueDate from "components/Dashboard/TodoList/DueDate";
 class Todo extends Component {
   renderLabel() {
     if (this.props.auth) {
-      if (this.props.todo.category === "Inbox" || this.props.currentCategory !== "Agenda") {
+      if (this.props.currentCategory !== "Agenda") {
         return <i className="white right triangle icon" />;
       }
       const { projects } = this.props.auth;

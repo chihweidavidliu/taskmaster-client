@@ -21,7 +21,12 @@ class FormInput extends React.Component {
 
   onSubmit = async (formValues) => {
     const todoText = formValues.todoInput; // get todo text
-    await this.props.addTodo({text: todoText, category: this.props.category, _creator: this.props.auth._id }); // dispatch action creator
+    if(this.props.category === "Agenda") {
+      await this.props.addTodo({text: todoText, category: "Inbox", _creator: this.props.auth._id, dueDate: new Date(new Date().getTime() + (1 * 60 * 60 * 1000)) }); // dispatch action creator
+      await this.props.fetchTodosByDueDate();
+    } else {
+      await this.props.addTodo({text: todoText, category: this.props.category, _creator: this.props.auth._id }); // dispatch action creator
+    }
     this.props.reset(); // reset value of input
     this.props.fetchTodoCount(); // update number of todos for each category
   }
