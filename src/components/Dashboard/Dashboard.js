@@ -10,6 +10,12 @@ import TodoList from "components/Dashboard/TodoList/TodoList";
 import "components/styles/Dashboard.css";
 
 class Dashboard extends Component {
+  renderInstructions() {
+    if(this.props.category === "Agenda") {
+      return <p id="instructions">Todos added from the agenda are sent to the Inbox and given a default due date (one hour from now)</p>
+    }
+    return <p id="instructions">Drag to reorder. Double-click text to edit</p>;
+  }
   render() {
     return (
       <div className="dashboard-wrapper">
@@ -19,7 +25,7 @@ class Dashboard extends Component {
           <TodoContainer>
             <h3>{this.props.category}</h3>
             <FormInput />
-            <p id="instructions">Drag to reorder. Double-click text to edit</p>
+            {this.renderInstructions()}
             <TodoList />
           </TodoContainer>
         </div>

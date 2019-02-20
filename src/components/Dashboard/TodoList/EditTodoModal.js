@@ -28,6 +28,9 @@ class EditTodoModal extends Component {
 
   handleItemClick = async (newProject) => {
     await this.props.updateTodoProject(this.props.todoId, this.props.category, newProject, this.props.indexInList);
+    if(this.props.currentView === "Agenda") {
+      await this.props.fetchTodosByDueDate();
+    }
     // update todo count
     this.props.fetchTodoCount();
   }
