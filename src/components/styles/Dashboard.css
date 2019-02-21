@@ -1,5 +1,5 @@
 .ui.grid {
-  height: 93vh;
+  height: 95vh;
 }
 
 .dashboard-wrapper {
@@ -34,6 +34,13 @@
 }
 
 @media only screen and (max-width: 767px) {
+  .dashboard-wrapper {
+    overflow-y: auto !important;
+  }
+}
+
+/* Landscape mode for modern smartphones  */
+@media only screen and (max-height: 414px) {
   .dashboard-wrapper {
     overflow-y: auto !important;
   }

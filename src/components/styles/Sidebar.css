@@ -10,13 +10,6 @@
   font-size: 17px;
 }
 
-@media only screen and (max-width: 780px) {
-  #sidebar {
-    margin-left: 0px !important;
-    height: 60vh;
-  }
-}
-
 .tool-group {
   margin-left: 3px;
   margin-top: 10px;
