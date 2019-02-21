@@ -18,8 +18,9 @@ class EditTodoModal extends Component {
     await this.props.editDueDate(this.props.todoId, date);
     // update order if in Agenda view
     if(this.props.currentView === "Agenda") {
-      this.props.fetchTodosByDueDate();
+      await this.props.fetchTodosByDueDate();
     }
+    this.props.fetchTodoCount();
   }
 
   handleClearDate = () => {
