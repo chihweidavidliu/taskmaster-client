@@ -12,13 +12,25 @@
 
 .todolist-header {
   display: flex;
-  align-items:baseline;
+  align-items: center;
   justify-content: space-between;
   padding-bottom: 0px;
 }
 
 #instructions {
-  transition: all 0.5s;
+  padding: 0;
+  margin: 0;
+  margin-top: 10px;
+
+}
+.instructions-shown {
+  opacity: 1;
+  transition: all 250ms linear;
+}
+
+.instructions-hidden {
+  opacity: 0;
+  transition: all 250ms linear;
 }
 
 @media only screen and (max-width: 767px) {

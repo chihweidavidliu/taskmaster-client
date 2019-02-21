@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Popup, Icon } from "semantic-ui-react";
+import { Popup, Icon, Button } from "semantic-ui-react";
 
 import requireAuth from "requireAuth";
 import Navbar from "components/Dashboard/Navbar";
@@ -18,35 +18,27 @@ class Dashboard extends Component {
       this.setState({ welcomeMessage: true });
       setTimeout(() => {
         this.setState({ welcomeMessage: false });
-      }, 5000);
+      }, 4000);
     }
   }
 
-  renderInstructions() {
-    if(this.state.welcomeMessage === true) {
-      return <p id="instructions">Drag to reorder. Double-click text to edit</p>;
-    }
-    return <p></p>
-  }
-
-  renderPopup() {
-    let message;
-
+  renderPopupMessage() {
     if(this.props.category === "Inbox") {
-      message = 'Use the Inbox to add incoming todos to be sorted later into their relevant projects. You should make it a habit to sort through your inbox for maximum productivity.'
-    } else if (this.props.category === "Agenda") {
-      message = "The Agenda gathers all todos with a due date and sorts them by imminence. Todos added from the agenda view are by default sent to the Inbox and given a due date of one hour from now."
-    } else {
-      message = "Drag the todo handle :: to reorder. Double-click todo text to edit content."
-    }
       return (
-        <Popup
-        trigger={<Icon inverted name='info circle' />}
-        content={message}
-        on='hover'
-        />
+        <React.Fragment>
+          <p>Use the Inbox to add incoming todos to be sorted later into their relevant projects. You should make it a habit to sort through your inbox for maximum productivity.</p>
+          <p>Drag the todo handle :: to reorder. Double-click todo text to edit content.</p>
+        </React.Fragment>
       )
-
+    } else if (this.props.category === "Agenda") {
+      return (
+        <p>The Agenda gathers all todos with a due date and sorts them by imminence. Todos added from the agenda view are by default sent to the Inbox and given a due date of one hour from now.</p>
+      )
+    } else {
+      return (
+        <p>Drag the todo handle :: to reorder. Double-click todo text to edit content.</p>
+      )
+    }
   }
 
   render() {
@@ -58,10 +50,17 @@ class Dashboard extends Component {
           <TodoContainer>
             <div className="todolist-header">
               <h3>{this.props.category}</h3>
-              {this.renderPopup()}
+              <Popup
+                trigger={<Button size="mini" compact basic circular inverted icon='info' />}
+                on='hover'
+              >
+                {this.renderPopupMessage()}
+              </Popup>
             </div>
             <FormInput />
-            {this.renderInstructions()}
+            <p id="instructions" className={` ${this.state.welcomeMessage ? 'instructions-shown' : 'instructions-hidden'}`}>
+              Drag the todo handle to reorder. Double-click text to edit content.
+            </p>
             <TodoList />
           </TodoContainer>
         </div>
