@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { Popup, Icon } from "semantic-ui-react";
 
 import requireAuth from "requireAuth";
 import Navbar from "components/Dashboard/Navbar";
@@ -10,12 +11,44 @@ import TodoList from "components/Dashboard/TodoList/TodoList";
 import "components/styles/Dashboard.css";
 
 class Dashboard extends Component {
-  renderInstructions() {
-    if(this.props.category === "Agenda") {
-      return <p id="instructions">Todos added from the agenda are sent to the Inbox and given a default due date (one hour from now)</p>
+  state = { welcomeMessage: false }
+
+  componentDidMount() {
+    if(this.props.category === "Inbox") {
+      this.setState({ welcomeMessage: true });
+      setTimeout(() => {
+        this.setState({ welcomeMessage: false });
+      }, 5000);
     }
-    return <p id="instructions">Drag to reorder. Double-click text to edit</p>;
   }
+
+  renderInstructions() {
+    if(this.state.welcomeMessage === true) {
+      return <p id="instructions">Drag to reorder. Double-click text to edit</p>;
+    }
+    return <p></p>
+  }
+
+  renderPopup() {
+    let message;
+
+    if(this.props.category === "Inbox") {
+      message = 'Use the Inbox to add incoming todos to be sorted later into their relevant projects. You should make it a habit to sort through your inbox for maximum productivity.'
+    } else if (this.props.category === "Agenda") {
+      message = "The Agenda gathers all todos with a due date and sorts them by imminence. Todos added from the agenda view are by default sent to the Inbox and given a due date of one hour from now."
+    } else {
+      message = "Drag the todo handle :: to reorder. Double-click todo text to edit content."
+    }
+      return (
+        <Popup
+        trigger={<Icon inverted name='info circle' />}
+        content={message}
+        on='hover'
+        />
+      )
+
+  }
+
   render() {
     return (
       <div className="dashboard-wrapper">
@@ -23,7 +56,10 @@ class Dashboard extends Component {
         <div className="ui stackable grid">
           <Sidebar />
           <TodoContainer>
-            <h3>{this.props.category}</h3>
+            <div className="todolist-header">
+              <h3>{this.props.category}</h3>
+              {this.renderPopup()}
+            </div>
             <FormInput />
             {this.renderInstructions()}
             <TodoList />

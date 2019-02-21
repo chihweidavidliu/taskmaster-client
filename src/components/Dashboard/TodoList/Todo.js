@@ -30,6 +30,12 @@ class Todo extends Component {
     }
   }
 
+  renderDragHandle() {
+    if(this.props.currentCategory !== "Agenda") {
+      return <DragHandle />;
+    }
+  }
+
   render() {
     const { _id, text, category, indexInList, dueDate } = this.props.todo;
     return (
@@ -42,7 +48,7 @@ class Todo extends Component {
           <DueDate dueDate={dueDate} />
           <EditTodoModal title={text} category={category} todoId={_id} indexInList={indexInList} dueDate={dueDate} />
           <DeleteButton id={_id} target={"todo"} />
-          <DragHandle />
+          {this.renderDragHandle()}
         </div>
       </div>
     );

@@ -2,6 +2,7 @@ import React from "react";
 
 const DueDate = (props) => {
   let dateMessage;
+  let  style;
   if (props.dueDate !== null) {
     // due date by date and time
     const date = new Date(props.dueDate).toLocaleString([], {
@@ -32,15 +33,16 @@ const DueDate = (props) => {
     // check for overdue
     const currentTime = new Date();
     const dueDate = new Date(props.dueDate);
-    
+
     if(currentTime > dueDate) {
       // if overdue
+      style="red";
       if(date === today) {
-        dateMessage = `Overdue! (today at ${time})`
+        dateMessage = `Overdue (today at ${time})`
       } else if(date === yesterday) {
-        dateMessage = `Overdue! (yesterday at ${time})`
+        dateMessage = `Overdue (yesterday at ${time})`
       } else {
-        dateMessage = `Overdue! (${date} at ${time})`
+        dateMessage = `Overdue (${date} at ${time})`
       }
     } else if(date === today) {
       dateMessage = `Due today at ${time}`
@@ -50,7 +52,7 @@ const DueDate = (props) => {
       dateMessage = `Due ${date} at ${time}`;
     }
   }
-  return <div className="dueDate-indicator">{dateMessage}</div>;
+  return <div className="dueDate-indicator" style={{ color: style }}>{dateMessage}</div>;
 };
 
 export default DueDate;

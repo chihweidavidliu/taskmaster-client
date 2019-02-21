@@ -10,6 +10,17 @@
   overflow-y: hidden;
 }
 
+.todolist-header {
+  display: flex;
+  align-items:baseline;
+  justify-content: space-between;
+  padding-bottom: 0px;
+}
+
+#instructions {
+  transition: all 0.5s;
+}
+
 @media only screen and (max-width: 767px) {
   .dashboard-wrapper {
     overflow-y: auto !important;
