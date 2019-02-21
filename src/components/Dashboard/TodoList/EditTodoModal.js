@@ -23,8 +23,9 @@ class EditTodoModal extends Component {
     this.props.fetchTodoCount();
   }
 
-  handleClearDate = () => {
-    this.props.editDueDate(this.props.todoId, null);
+  handleClearDate = async () => {
+    await this.props.editDueDate(this.props.todoId, null);
+    this.props.fetchTodoCount();
   }
 
   handleItemClick = async (newProject) => {
