@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Popup, Icon, Button } from "semantic-ui-react";
+import { Popup, Button } from "semantic-ui-react";
 
 import requireAuth from "requireAuth";
 import Navbar from "components/Dashboard/Navbar";

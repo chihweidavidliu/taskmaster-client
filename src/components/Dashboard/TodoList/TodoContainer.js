@@ -17,20 +17,16 @@ class TodoContainer extends Component {
       // get current project and identify background image
       const project = this.props.auth.projects.filter((project) => project.name === this.props.category);
       if (!project[0]) {
-        styles = { backgroundColor: "teal" };
+        styles = { backgroundImage: `url(${background6})`, backgroundSize: "cover" };
       } else {
-        if(project[0].image === null) {
-          styles = { backgroundColor: "teal" };
-        } else {
-          const backgroundImage = project[0].image;
-          const map = { background1, background2, background3, background4, background5, background6 };
-          // map the string backgroundImage to the variable for the background  import
-          const background = map[backgroundImage];
-          styles = { backgroundImage: `url(${background})`, backgroundSize: "cover" };
-        }
+        const backgroundImage = project[0].image;
+        const map = { background1, background2, background3, background4, background5, background6 };
+        // map the string backgroundImage to the variable for the background  import
+        const background = map[backgroundImage];
+        styles = { backgroundImage: `url(${background})`, backgroundSize: "cover" };
       }
     } else {
-      styles = { backgroundColor: "teal" };
+      styles = { backgroundImage: `url(${background6})`, backgroundSize: "cover" };
     }
 
     return (
