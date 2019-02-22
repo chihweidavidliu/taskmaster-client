@@ -2,6 +2,7 @@ import todoReducer from "../todoReducer";
 import moxios from "moxios";
 
 import {
+  FETCH_TODOS_BY_DUEDATE,
   UPDATE_TODO_PROJECT,
   FETCH_TODOS,
   ADD_TODO,
@@ -74,6 +75,34 @@ describe("FETCH_TODOS", () => {
   });
 });
 
+describe("FETCH_TODOS_BY_DUEDATE", () => {
+  it("should fetch todos and order them by duedate", () => {
+    const today = new Date().toLocaleString([], {
+      year: "2-digit",
+      month: "2-digit",
+      day: "2-digit"
+    });
+
+    const tomorrow = new Date(new Date().getTime() + (24 * 60 * 60 * 1000)).toLocaleString([], {
+      year: "2-digit",
+      month: "2-digit",
+      day: "2-digit"
+    });;
+
+    const action = {
+      type: FETCH_TODOS_BY_DUEDATE,
+      payload: [
+        { _id: "ajabbrr", text: "hello", category: "Inbox", indexInList: 1, dueDate: today  },
+        { _id: "ashegae", text: "Aneta", category: "Inbox", indexInList: 0, dueDate: tomorrow }
+      ]
+    };
+
+    const newState = todoReducer([], action);
+    expect(newState[0].text).toBe("hello");
+    expect(newState[1].text).toBe("Aneta");
+  });
+});
+
 describe("EDIT_TODO_TEXT", () => {
   it("should update todo text", () => {
       const initialState = [{ _id: "ashegae", text: "Aneta", category: "Inbox", indexInList: 0 }];
@@ -85,6 +114,7 @@ describe("EDIT_TODO_TEXT", () => {
       expect(newState[0].text).toBe("Aneta loves Goat");
   });
 });
+
 
 describe("UPDATE_ORDER", () => {
   it("should update todo order", () => {
