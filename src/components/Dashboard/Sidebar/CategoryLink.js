@@ -44,7 +44,7 @@ class CategoryLink extends Component {
       return (
         <div className="project-edit-tools" style={{ color: this.props.accentColor }}>
           <EditProjectModal name={this.props.name} color={this.props.projectLabelColor} projectId={this.props.projectId}/>
-          <DeleteButton color={this.props.accentColor} name={this.props.name} target="project" />
+          <DeleteButton color={this.props.accentColor} id={this.props.projectId} target="project" />
           <DragHandle />
         </div>
       );

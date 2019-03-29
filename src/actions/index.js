@@ -42,8 +42,8 @@ export const addProject = (projectName) => async (dispatch) => {
   dispatch({ type: ADD_PROJECT, payload: response.data });
 };
 
-export const deleteProject = (project) => async (dispatch) => {
-  const response = await axios.delete(`/api/current_user/deleteProject/${project}`);
+export const deleteProject = (id) => async (dispatch) => {
+  const response = await axios.delete(`/api/current_user/deleteProject/${id}`);
   dispatch({ type: DELETE_PROJECT, payload: response.data });
 };
 
