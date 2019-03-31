@@ -73,13 +73,13 @@ export const updateProjectOrder = (oldIndex, newIndex) => async (dispatch) => {
 // TODO actions
 
 export const fetchTodos = (category) => async (dispatch) => {
-  const response = await axios.get(`/api/todos/filter/${category}`);
+  const response = await axios.get(`/api/todos/filter/?category=${category}`);
   const todos = response.data.todos;
   dispatch({ type: FETCH_TODOS, payload: todos });
 };
 
 export const fetchTodosByDueDate = () => async (dispatch) => {
-  const response = await axios.get("/api/todos/filter/dueDate");
+  const response = await axios.get(`/api/todos/filter/?dueDate!=${null}`);
   const { todos } = response.data;
   dispatch({ type: FETCH_TODOS_BY_DUEDATE, payload: todos });
 };
