@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Menu, Label } from "semantic-ui-react";
 import { connect } from "react-redux";
+import PropTypes from "prop-types";
 
 import "components/styles/CategoryLink.css";
 import DeleteButton from "components/Dashboard/DeleteButton";
@@ -10,25 +11,33 @@ import EditProjectModal from "components/Dashboard/Sidebar/EditProjectModal";
 import * as actions from "actions";
 
 class CategoryLink extends Component {
+  static propTypes = {
+    currentProject: PropTypes.object, // from redux store
+    numOfTodos: PropTypes.number,
+    editMode: PropTypes.bool,
+    accentColor: PropTypes.string,
+    project: PropTypes.object.isRequired, // details of the project
+    index: PropTypes.number
+  };
+
   state = { contentEditable: false };
 
   handleItemClick = (e, { name }) => {
-    if (this.props.editMode === false && this.props.activeItem !== this.props.name) {
+    const { editMode, project, currentProject } = this.props;
+    if (editMode === false && currentProject._id !== project._id) {
       // only do this if editMode is off and the link is not that of the already selected project
-      this.props.setCategory(name);
-      this.props.fetchTodos(name);
+      this.props.setCurrentProject(project);
+      this.props.fetchTodos(project._id);
     } else if (this.props.editMode === true) {
       this.setState({ contentEditable: true });
     }
   };
 
   handleBlur = async (e) => {
+    const { project } = this.props;
     const newName = e.target.innerText;
-    await this.props.editProjectName(this.props.projectId, this.props.name, newName); // send new text to state onBlur
+    await this.props.editProjectName(project._id, project.name, newName); // send new text to state onBlur
     await this.setState({ contentEditable: false });
-    await this.props.setCategory(newName);
-    await this.props.fetchTodoCount();
-    await this.props.fetchTodos(newName);
   };
 
   handleKeyPress = (e) => {
@@ -40,11 +49,12 @@ class CategoryLink extends Component {
   };
 
   renderEditTools() {
-    if (this.props.name !== "Inbox" && this.props.editMode === true) {
+    const { project } = this.props;
+    if (project.name !== "Inbox" && this.props.editMode === true) {
       return (
         <div className="project-edit-tools" style={{ color: this.props.accentColor }}>
-          <EditProjectModal name={this.props.name} color={this.props.projectLabelColor} projectId={this.props.projectId}/>
-          <DeleteButton color={this.props.accentColor} id={this.props.projectId} target="project" />
+          <EditProjectModal project={project} />
+          <DeleteButton color={this.props.accentColor} id={project._id} target="project" />
           <DragHandle />
         </div>
       );
@@ -52,28 +62,25 @@ class CategoryLink extends Component {
   }
 
   renderName() {
-    if (this.props.name !== "Inbox") {
-      return (
-        <div
-          contentEditable={this.state.contentEditable}
-          suppressContentEditableWarning={true}
-          onDoubleClick={this.handleDoubleClick}
-          onBlur={this.handleBlur}
-          onKeyPress={this.handleKeyPress}
-          style={{ color: this.props.accentColor }}
-        >
-          {this.props.name}
-        </div>
-      );
-    }
-
-    return <div>{this.props.name}</div>;
+    const { name } = this.props.project;
+    return (
+      <div
+        contentEditable={this.state.contentEditable}
+        suppressContentEditableWarning={true}
+        onDoubleClick={this.handleDoubleClick}
+        onBlur={this.handleBlur}
+        onKeyPress={this.handleKeyPress}
+        style={{ color: this.props.accentColor }}
+      >
+        {name}
+      </div>
+    );
   }
 
   renderCounter() {
     if (this.props.editMode === false) {
       let style;
-      if (this.props.name === "Inbox") {
+      if (this.props.project.name === "Inbox") {
         style = { marginRight: "12px" };
       }
       return (
@@ -86,15 +93,15 @@ class CategoryLink extends Component {
 
   renderLabel() {
     if (this.props.name !== "Inbox") {
-      return <Label empty={true} circular color={this.props.projectLabelColor} style={{ marginRight: "8px" }} />;
+      return <Label empty={true} circular color={this.props.project.color} style={{ marginRight: "8px" }} />;
     }
   }
 
   render() {
     return (
       <Menu.Item
-        name={this.props.name}
-        active={this.props.activeItem === this.props.name}
+        name={this.props.project.name}
+        active={this.props.currentProject._id === this.props.project._id}
         onClick={this.handleItemClick}
         className="project"
       >
@@ -113,8 +120,8 @@ class CategoryLink extends Component {
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    activeItem: state.category,
-    numOfTodos: state.categoryCounts[ownProps.name]
+    currentProject: state.currentProject,
+    numOfTodos: state.projectCounts[ownProps.project._id]
   };
 };
 

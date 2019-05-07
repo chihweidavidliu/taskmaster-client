@@ -11,21 +11,36 @@ import background6 from "images/thumbnails/background6.jpg";
 
 class BackgroundChoice extends Component {
   handleClick = () => {
-    const { projectId, backgroundName } = this.props;
-    this.props.editProjectImage(projectId, backgroundName);
+    const { project, currentProject, backgroundName, setCurrentProject } = this.props;
+    this.props.editProjectImage(project._id, backgroundName);
+    // if the project being edited is the current project being viewed, optimistically update the image manually
+    if (currentProject._id === project._id) {
+      setCurrentProject({...project, image: backgroundName });
+    }
   };
 
   render() {
-    const map = { background1, background2, background3, background4, background5, background6 }
-    if(this.props.active === true) {
+    const map = { background1, background2, background3, background4, background5, background6 };
+    if (this.props.active === true) {
       return (
-          <img alt={this.props.alt} className="active-image" src={map[this.props.backgroundName]} onClick={this.handleClick} />
+        <img
+          alt={this.props.alt}
+          className="active-image"
+          src={map[this.props.backgroundName]}
+          onClick={this.handleClick}
+        />
       );
     }
-    return (
-        <img alt={this.props.alt} src={map[this.props.backgroundName]} onClick={this.handleClick} />
-    );
+    return <img alt={this.props.alt} src={map[this.props.backgroundName]} onClick={this.handleClick} />;
   }
 }
 
-export default connect(null, actions) (BackgroundChoice);
+const mapStateToProps = (state) => {
+  return {
+    currentProject: state.currentProject
+  };
+};
+export default connect(
+  mapStateToProps,
+  actions
+)(BackgroundChoice);

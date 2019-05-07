@@ -19,10 +19,10 @@ beforeEach(() => {
         text: "Hello",
         _creator: "5c5c6a960a759e145f1e24b5",
         indexInList: 0,
-        category: "Inbox"
+        project: "Inbox"
       }
     ],
-    category: "Inbox"
+    currentProject: { _id: "Inbox", name: "Inbox", color: "teal", background: "background6" }
   };
 
   wrapped = mount(
@@ -47,7 +47,8 @@ it("should contain a link to signout", () => {
   expect(wrapped.find("[href='/api/logout']").length).toBe(1);
 });
 
-it("should contain a message with the user's name", () => {
-  expect(wrapped.find("p").length).toBe(1);
-  expect(wrapped.find("p").text()).toBe("Signed in as Chih-Wei");
+it("should contain a message with the user's name and the date", () => {
+  expect(wrapped.find("p").length).toBe(2);
+  expect(wrapped.find('p[id="user"]').length).toBe(1);
+  expect(wrapped.find('p[id="date"]').length).toBe(1);
 });

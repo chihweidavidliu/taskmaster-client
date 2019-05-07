@@ -15,29 +15,31 @@ import DueDate from "components/Dashboard/TodoList/DueDate";
 class Todo extends Component {
   renderLabel() {
     if (this.props.auth) {
-      if (this.props.currentCategory !== "Agenda") {
+      if (this.props.currentProject._id !== "Agenda") {
         return <i className="white right triangle icon" />;
       }
       const { projects } = this.props.auth;
       let color;
+      let name;
       projects.forEach((project) => {
-        if (project.name === this.props.todo.category) {
+        if (project._id === this.props.todo.project) {
           color = project.color;
+          name = project.name;
         }
       });
 
-      return <Label className="project-label" title={this.props.todo.category} empty={true} circular color={color} />;
+      return <Label className="project-label" title={name} empty={true} circular color={color} />;
     }
   }
 
   renderDragHandle() {
-    if(this.props.currentCategory !== "Agenda") {
+    if(this.props.currentProject._id !== "Agenda") {
       return <DragHandle />;
     }
   }
 
   render() {
-    const { _id, text, category, indexInList, dueDate } = this.props.todo;
+    const { _id, text, project, indexInList, dueDate } = this.props.todo;
     return (
       <div className="todo-item" id={_id}>
         <div className="content">
@@ -46,7 +48,7 @@ class Todo extends Component {
         </div>
         <div className="todo-tools">
           <DueDate dueDate={dueDate} />
-          <EditTodoModal title={text} category={category} todoId={_id} indexInList={indexInList} dueDate={dueDate} />
+          <EditTodoModal title={text} projectId={project} todoId={_id} indexInList={indexInList} dueDate={dueDate} />
           <DeleteButton id={_id} target={"todo"} />
           {this.renderDragHandle()}
         </div>
@@ -58,7 +60,7 @@ class Todo extends Component {
 const mapStateToProps = (state, ownProps) => {
   return {
     auth: state.auth,
-    currentCategory: state.category,
+    currentProject: state.currentProject
   };
 };
 

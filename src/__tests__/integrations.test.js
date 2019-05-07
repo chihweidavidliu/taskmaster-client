@@ -6,6 +6,7 @@ import { mount } from "enzyme";
 import Root from "Root";
 import Dashboard from "components/Dashboard/Dashboard";
 import Todo from "components/Dashboard/TodoList/Todo";
+import CategoryLink from "components/Dashboard/Sidebar/CategoryLink";
 
 let wrapped;
 beforeEach(() => {
@@ -14,7 +15,7 @@ beforeEach(() => {
   const initialState = {
     auth: {
       _id: "5c5c6a960a759e145f1e24b5",
-      projects: [{ name: "Misc", color: "teal", image: null, _id: "dashfakjhfkahef"}]
+      projects: [{ name: "Misc", color: "teal", image: null, _id: "dashfakjhfkahef" }]
     },
     todos: [
       {
@@ -22,11 +23,11 @@ beforeEach(() => {
         text: "Go to park",
         _creator: "5c5c6a960a759e145f1e24b5",
         indexInList: 0,
-        category: "Inbox"
+        project: "Inbox"
       }
     ],
-    category: "Inbox",
-    categoryCounts: { Inbox: 1, Misc: 0 }
+    currentProject: { _id: "Inbox", name: "Inbox", color: "teal", background: "background6" },
+    projectCounts: { Inbox: 1, Misc: 0 }
   };
 
   wrapped = mount(
@@ -91,7 +92,7 @@ it("should delete a todo when delete button is clicked", (done) => {
 });
 
 it("should display a list of appropriate todos when project folder is clicked", (done) => {
-  moxios.stubRequest("/api/todos/filter/Misc", {
+  moxios.stubRequest("/api/todos/filter/?project=dashfakjhfkahef", {
     status: 200,
     response: {
       todos: [
@@ -104,7 +105,7 @@ it("should display a list of appropriate todos when project folder is clicked", 
           completedAt: null,
           completed: false,
           indexInList: 1,
-          category: "Misc"
+          project: "dashfakjhfkahef"
         },
         {
           _id: "5c5f2b2a2a49f22478f1da24",
@@ -115,13 +116,13 @@ it("should display a list of appropriate todos when project folder is clicked", 
           completedAt: null,
           completed: false,
           indexInList: 0,
-          category: "Misc"
+          project: "dashfakjhfkahef"
         }
       ]
     }
   });
 
-  wrapped.find({ name: "Misc", activeItem: "Inbox" }).simulate("click");
+  wrapped.find({ name: "Misc", className: "project" }).simulate("click");
   moxios.wait(() => {
     wrapped.update();
     expect(wrapped.find(Todo).length).toEqual(2);

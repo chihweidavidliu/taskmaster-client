@@ -11,33 +11,26 @@ import TodoList from "components/Dashboard/TodoList/TodoList";
 import "components/styles/Dashboard.css";
 
 class Dashboard extends Component {
-  state = { welcomeMessage: false }
-
-  componentDidMount() {
-    if(this.props.category === "Inbox") {
-      this.setState({ welcomeMessage: true });
-      setTimeout(() => {
-        this.setState({ welcomeMessage: false });
-      }, 4000);
-    }
-  }
-
   renderPopupMessage() {
-    if(this.props.category === "Inbox") {
+    if (this.props.currentProject.id === "Inbox") {
       return (
         <React.Fragment>
-          <p>Use the Inbox to add incoming todos to be sorted later into their relevant projects. You should make it a habit to sort through your inbox for maximum productivity.</p>
+          <p>
+            Use the Inbox to add incoming todos to be sorted later into their relevant projects. You should make it a
+            habit to sort through your inbox for maximum productivity.
+          </p>
           <p>Drag the todo handle :: to reorder. Double-click todo text to edit content.</p>
         </React.Fragment>
-      )
-    } else if (this.props.category === "Agenda") {
+      );
+    } else if (this.props.currentProject.id === "Agenda") {
       return (
-        <p>The Agenda gathers all todos with a due date and sorts them by imminence. Todos added from the agenda view are by default sent to the Inbox and given a due date of one hour from now.</p>
-      )
+        <p>
+          The Agenda gathers all todos with a due date and sorts them by imminence. Todos added from the agenda view are
+          by default sent to the Inbox and given a due date of one hour from now.
+        </p>
+      );
     } else {
-      return (
-        <p>Drag the todo handle :: to reorder. Double-click todo text to edit content.</p>
-      )
+      return <p>Drag the todo handle :: to reorder. Double-click todo text to edit content.</p>;
     }
   }
 
@@ -49,18 +42,13 @@ class Dashboard extends Component {
           <Sidebar />
           <TodoContainer>
             <div className="todolist-header">
-              <h3>{this.props.category}</h3>
-              <Popup
-                trigger={<Button size="mini" compact basic circular inverted icon='info' />}
-                on='hover'
-              >
+              <h3>{this.props.currentProject.name}</h3>
+              <Popup trigger={<Button size="mini" compact basic circular inverted icon="info" />} on="hover">
                 {this.renderPopupMessage()}
               </Popup>
             </div>
             <FormInput />
-            <p id="instructions" className={` ${this.state.welcomeMessage ? 'instructions-shown' : 'instructions-hidden'}`}>
-              Drag the todo handle to reorder. Double-click text to edit content.
-            </p>
+            <p id="instructions">Drag the todo handle to reorder. Double-click text to edit content.</p>
             <TodoList />
           </TodoContainer>
         </div>
@@ -71,7 +59,7 @@ class Dashboard extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    category: state.category,
+    currentProject: state.currentProject,
     auth: state.auth
   };
 };

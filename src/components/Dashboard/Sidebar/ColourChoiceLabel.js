@@ -16,9 +16,4 @@ class ColourChoiceLabel extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
-  return {
-    projects: state.auth.projects
-  }
-};
-export default connect(mapStateToProps, actions) (ColourChoiceLabel);
+export default connect(null, actions) (ColourChoiceLabel);

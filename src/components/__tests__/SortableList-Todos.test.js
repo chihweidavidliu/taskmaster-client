@@ -22,10 +22,10 @@ beforeEach(() => {
         text: "Hello",
         _creator: "5c5c6a960a759e145f1e24b5",
         indexInList: 0,
-        category: "Inbox"
+        project: "Inbox"
       }
     ],
-    category: "Inbox"
+    currentProject: { _id: "Inbox", name: "Inbox", color: "teal", background: "background6" }
   };
 
   wrapped = mount(

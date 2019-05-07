@@ -13,19 +13,16 @@ class TodoContainer extends Component {
   render() {
     let styles;
     // determine background
-    if (this.props.auth && this.props.category && this.props.category !== "Inbox") {
+    if (this.props.auth && this.props.currentProject) {
       // get current project and identify background image
-      const project = this.props.auth.projects.filter((project) => project.name === this.props.category);
-      if (!project[0]) {
-        styles = { backgroundImage: `url(${background6})`, backgroundSize: "cover" };
-      } else {
-        const backgroundImage = project[0].image;
-        const map = { background1, background2, background3, background4, background5, background6 };
-        // map the string backgroundImage to the variable for the background  import
-        const background = map[backgroundImage];
-        styles = { backgroundImage: `url(${background})`, backgroundSize: "cover" };
-      }
+      const { currentProject } = this.props;
+      const backgroundImage = currentProject.image;
+      const map = { background1, background2, background3, background4, background5, background6 };
+      // map the string backgroundImage to the variable for the background  import
+      const background = map[backgroundImage];
+      styles = { backgroundImage: `url(${background})`, backgroundSize: "cover" };
     } else {
+      // fallback styles
       styles = { backgroundImage: `url(${background6})`, backgroundSize: "cover" };
     }
 
@@ -39,7 +36,7 @@ class TodoContainer extends Component {
 const mapStateToProps = (state) => {
   return {
     auth: state.auth,
-    category: state.category
+    currentProject: state.currentProject
   };
 };
 export default connect(mapStateToProps)(TodoContainer);

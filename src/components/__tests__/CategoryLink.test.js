@@ -12,7 +12,7 @@ beforeEach(() => {
   wrapped = mount(
     <Root initialState={{}}>
       <MemoryRouter>
-        <CategoryLink name="Misc" />
+        <CategoryLink project={{ _id: "sfgewfef", name: "Misc", color: "teal", image: "background6" }} />
       </MemoryRouter>
     </Root>
   );

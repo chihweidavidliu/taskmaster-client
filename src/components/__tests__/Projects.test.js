@@ -9,9 +9,10 @@ import CategoryLink from "components/Dashboard/Sidebar/CategoryLink";
 import DeleteButton from "components/Dashboard/DeleteButton";
 
 let wrapped;
+let miscProject;
 beforeEach(() => {
   moxios.install();
-
+  miscProject = { name: "Misc", color: "teal", image: "background6", _id: "kjhfakjhfjfed" };
   wrapped = mount(
     <Root
       initialState={{
@@ -21,9 +22,9 @@ beforeEach(() => {
           googleID: "105278708793854655515",
           name: "Chih-Wei Liu",
           __v: 0,
-          projects: [{ name: "Misc", color: "teal", image: null, _id: "kjhfakjhfjfed" }]
+          projects: [miscProject]
         },
-        categoryCounts: { Inbox: 0, Misc: 0 }
+        projectCounts: { Inbox: 0, [miscProject._id]: 0 }
       }}
     >
       <Projects />
@@ -71,7 +72,7 @@ it("should add a project on submit", (done) => {
       googleID: "105278708793854655515",
       name: "Chih-Wei Liu",
       __v: 0,
-      projects: ["Misc", "New Project"]
+      projects: [miscProject, { _id: "djhnjbkje", name: "newProject", color: "teal", image: "background6" }]
     }
   });
 

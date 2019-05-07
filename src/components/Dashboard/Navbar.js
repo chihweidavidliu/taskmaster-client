@@ -22,7 +22,7 @@ class Navbar extends Component {
           </Link>
         </div>
         <div className="item">
-          <p>
+          <p id="date">
             {new Date().toLocaleString([], {
               year: "2-digit",
               month: "2-digit",
@@ -34,7 +34,7 @@ class Navbar extends Component {
           </p>
         </div>
         <div className="item">
-          <p>Signed in as {this.renderUsername()}</p>
+          <p id="user">Signed in as {this.renderUsername()}</p>
         </div>
         <div className="item right">
           <a href="/api/logout">Sign-out</a>

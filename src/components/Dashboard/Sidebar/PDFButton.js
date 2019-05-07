@@ -7,7 +7,7 @@ pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
 class PDFButton extends React.Component {
   handleClick = () => {
-    const { todos, category } = this.props;
+    const { todos, currentProject } = this.props;
 
     const list = todos.map((todo) => {
       let todoObject;
@@ -31,7 +31,7 @@ class PDFButton extends React.Component {
     const date = today.toLocaleDateString("en-GB");
 
     var docDefinition = {
-      content: [{ text: `My todos (${category})`, style: "header" }, { ol: list }],
+      content: [{ text: `My todos (${currentProject.name})`, style: "header" }, { ol: list }],
 
       footer: {
         columns: [
@@ -68,7 +68,7 @@ class PDFButton extends React.Component {
       <Menu.Item onClick={this.handleClick}>
         <div className="tool-group">
           <Icon name="file pdf" />
-          Export "{this.props.category}" as PDF
+          Export "{this.props.currentProject.name}" as PDF
         </div>
       </Menu.Item>
     );
@@ -78,7 +78,7 @@ class PDFButton extends React.Component {
 const mapStateToProps = (state) => {
   return {
     todos: state.todos,
-    category: state.category
+    currentProject: state.currentProject
   };
 };
 export default connect(mapStateToProps)(PDFButton);

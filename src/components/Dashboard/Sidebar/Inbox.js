@@ -5,16 +5,16 @@ import PropTypes from "prop-types";
 
 import * as actions from "actions";
 
-class Agenda extends Component {
+class Inbox extends Component {
   static propTypes = {
     name: PropTypes.string.isRequired,
     _id: PropTypes.string.isRequired, // id reference to the Project Id for fetching todos
   }
 
   handleClick = () => {
-    this.props.setCurrentProject({ _id: "Agenda", name: "Agenda", color: "teal", image: "background6" });
-    // action creator that gets todos that have a duedate
-    this.props.fetchTodosByDueDate();
+    this.props.setCurrentProject({ _id: "Inbox", name: "Inbox", color: "teal", image: "background6" });
+    // fetch inbox
+    this.props.fetchTodos("Inbox");
   }
 
   render() {
@@ -40,4 +40,4 @@ const mapStateToProps = (state, ownProps) => {
     numOfTodos: state.projectCounts[ownProps._id]
   }
 };
-export default connect(mapStateToProps, actions) (Agenda);
+export default connect(mapStateToProps, actions) (Inbox);

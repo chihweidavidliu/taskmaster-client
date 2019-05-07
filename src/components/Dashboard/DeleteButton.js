@@ -12,7 +12,7 @@ class DeleteButton extends Component {
       e.stopPropagation(); // prevent the click bubbling up to the main project link (else this would set category state to the project about to be deleted)
       await this.props.deleteProject(id);
       // redirect to inbox
-      this.props.setCategory("Inbox");
+      this.props.setCurrentProject({ _id: "Inbox", name: "Inbox" });
       this.props.fetchTodos("Inbox");
       this.props.fetchTodoCount();
     }

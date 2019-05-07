@@ -10,6 +10,7 @@ let wrapped;
 beforeEach(() => {
   moxios.install();
 
+  const miscProject = { name: "Misc", color: "teal", image: null, _id: "kjhfakjhfjfed" };
   wrapped = mount(
     <Root
       initialState={{
@@ -19,12 +20,12 @@ beforeEach(() => {
           googleID: "105278708793854655515",
           name: "Chih-Wei Liu",
           __v: 0,
-          projects: [{ name: "Misc", color: "teal", image: null, _id: "kjhfakjhfjfed" }]
+          projects: [miscProject]
         },
-        categoryCounts: { Inbox: 0, Misc: 0 }
+        projectCounts: { Inbox: 0, [miscProject._id]: 0 }
       }}
     >
-      <EditProjectModal name="Misc" color="teal" projectId="kjhfakjhfjfed"/>
+      <EditProjectModal name="Misc" color="teal" project={miscProject}/>
     </Root>
   );
 });

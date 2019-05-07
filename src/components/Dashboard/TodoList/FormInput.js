@@ -10,26 +10,31 @@ class FormInput extends React.Component {
     return (
       <div className="field">
         <h4>{formProps.label}</h4>
-        <input
-          {...formProps.input}
-          autoComplete="off"
-          placeholder="Add a todo"
-        />
+        <input {...formProps.input} autoComplete="off" placeholder="Add a todo" />
       </div>
     );
-  }
+  };
 
   onSubmit = async (formValues) => {
     const todoText = formValues.todoInput; // get todo text
-    if(this.props.category === "Agenda") {
-      await this.props.addTodo({text: todoText, category: "Inbox", _creator: this.props.auth._id, dueDate: new Date(new Date().getTime() + (1 * 60 * 60 * 1000)) }); // dispatch action creator
+    if (this.props.currentProject.id === "Agenda") {
+      await this.props.addTodo({
+        text: todoText,
+        project: "Inbox",
+        _creator: this.props.auth._id,
+        dueDate: new Date(new Date().getTime() + 1 * 60 * 60 * 1000)
+      }); // dispatch action creator
       await this.props.fetchTodosByDueDate();
     } else {
-      await this.props.addTodo({text: todoText, category: this.props.category, _creator: this.props.auth._id }); // dispatch action creator
+      await this.props.addTodo({
+        text: todoText,
+        project: this.props.currentProject._id,
+        _creator: this.props.auth._id
+      }); // dispatch action creator
     }
     this.props.reset(); // reset value of input
-    this.props.fetchTodoCount(); // update number of todos for each category
-  }
+    this.props.fetchTodoCount(); // update number of todos for each project
+  };
 
   render() {
     return (
@@ -42,9 +47,12 @@ class FormInput extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    category: state.category,
+    currentProject: state.currentProject,
     auth: state.auth
-  }
+  };
 };
-const wrapped = connect(mapStateToProps, actions) (FormInput);
-export default reduxForm({ form: "todoForm" }) (wrapped);
+const wrapped = connect(
+  mapStateToProps,
+  actions
+)(FormInput);
+export default reduxForm({ form: "todoForm" })(wrapped);

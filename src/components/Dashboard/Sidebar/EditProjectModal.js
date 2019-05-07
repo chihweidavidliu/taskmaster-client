@@ -1,12 +1,16 @@
 import React, { Component } from "react";
 import { Button, Header, Icon, Modal, Label } from "semantic-ui-react";
 import { connect } from "react-redux";
+import PropTypes from "prop-types";
 
 import BackgroundChoice from "./BackgroundChoice";
 import ColourChoiceLabel from "./ColourChoiceLabel";
 import "components/styles/EditProjectModal.css";
 
 class EditProjectModal extends Component {
+  static propTypes = {
+    project: PropTypes.object.isRequired,
+  }
   state = { open: false };
 
   close = () => this.setState({ open: false });
@@ -17,25 +21,24 @@ class EditProjectModal extends Component {
     return colors.map((color) => {
       // if the current color is the same as the label being rendered, set it as active
       if (this.props.color === color) {
-        return <ColourChoiceLabel key={color} active={true} color={color} projectId={this.props.projectId} />;
+        return <ColourChoiceLabel key={color} active={true} color={color} projectId={this.props.project._id} />;
       }
-      return <ColourChoiceLabel key={color} active={false} color={color} projectId={this.props.projectId} />;
+      return <ColourChoiceLabel key={color} active={false} color={color} projectId={this.props.project._id} />;
     });
   }
 
   renderBackgroundChoices() {
     const backgrounds = ["background1", "background2", "background3", "background4", "background5", "background6"];
-    const { projects } = this.props;
-    const currentProject = projects.filter((project) => project._id === this.props.projectId);
+    const { project } = this.props;
     return backgrounds.map((background) => {
       let activeCheck = false;
-      if (currentProject[0].image === background) {
+      if (project.image === background) {
         activeCheck = true;
       }
       return (
         <BackgroundChoice
           active={activeCheck}
-          projectId={this.props.projectId}
+          project={project}
           alt={background}
           backgroundName={background}
           key={background}
@@ -46,7 +49,7 @@ class EditProjectModal extends Component {
 
   render() {
     const { open } = this.state;
-
+    const { project } = this.props;
     return (
       <Modal
         trigger={<Icon name="options" title="More options" onClick={this.show} />}
@@ -55,8 +58,8 @@ class EditProjectModal extends Component {
       >
         <Modal.Header className="modal-header">
           <div>
-            <Label empty={true} circular color={this.props.color} style={{ marginRight: "10px" }} />
-            {this.props.name}
+            <Label empty={true} circular color={project.color} style={{ marginRight: "10px" }} />
+            {project.name}
           </div>
           <Modal.Actions>
             <Button color="green" onClick={this.close}>

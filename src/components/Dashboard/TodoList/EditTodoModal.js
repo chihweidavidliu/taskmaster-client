@@ -17,7 +17,7 @@ class EditTodoModal extends Component {
   onDateChange = async date => {
     await this.props.editDueDate(this.props.todoId, date);
     // update order if in Agenda view
-    if(this.props.currentView === "Agenda") {
+    if(this.props.currentProject._id === "Agenda") {
       await this.props.fetchTodosByDueDate();
     }
     this.props.fetchTodoCount();
@@ -25,15 +25,15 @@ class EditTodoModal extends Component {
 
   handleClearDate = async () => {
     await this.props.editDueDate(this.props.todoId, null);
-    if(this.props.currentView === "Agenda") {
+    if(this.props.currentProject._id === "Agenda") {
       await this.props.fetchTodosByDueDate();
     }
     this.props.fetchTodoCount();
   }
 
-  handleItemClick = async (newProject) => {
-    await this.props.updateTodoProject(this.props.todoId, this.props.category, newProject, this.props.indexInList);
-    if(this.props.currentView === "Agenda") {
+  handleItemClick = async (newProjectId) => {
+    await this.props.updateTodoProject(this.props.todoId, this.props.projectId, newProjectId, this.props.indexInList);
+    if(this.props.currentProject._id === "Agenda") {
       await this.props.fetchTodosByDueDate();
     }
     // update todo count
@@ -47,10 +47,10 @@ class EditTodoModal extends Component {
           <Menu.Item
             key={project._id}
             name={project.name}
-            active={project.name === this.props.category}
+            active={project._id === this.props.projectId}
             onClick={() => {
-              if(project.name !== this.props.category) {
-                this.handleItemClick(project.name)
+              if(project._id !== this.props.projectId) {
+                this.handleItemClick(project._id)
               }
             }}
             >
@@ -137,7 +137,7 @@ class EditTodoModal extends Component {
 const mapStateToProps = (state) => {
   return {
     auth: state.auth,
-    currentView: state.category
+    currentProject: state.currentProject
   };
 };
 

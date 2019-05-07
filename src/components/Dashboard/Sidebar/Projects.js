@@ -9,9 +9,7 @@ import CategoryLink from "components/Dashboard/Sidebar/CategoryLink";
 import * as actions from "actions";
 
 // Enhance components to make them sortable
-const ProjectSortableItem = sortableElement((props) => (
-  <CategoryLink {...props} />
-));
+const ProjectSortableItem = sortableElement((props) => <CategoryLink {...props} />);
 
 const ProjectSortableContainer = sortableContainer(({ children }) => {
   return <div id="projects-list">{children}</div>;
@@ -27,10 +25,10 @@ class Projects extends Component {
 
   onSortEnd = ({ oldIndex, newIndex }) => {
     this.props.updateProjectOrder(oldIndex, newIndex);
-  }
+  };
 
   renderProjects() {
-    if(this.props.auth) {
+    if (this.props.auth) {
       const { projects } = this.props.auth;
       return projects.map((project, index) => {
         if (this.state.editMode === true) {
@@ -38,26 +36,21 @@ class Projects extends Component {
             <ProjectSortableItem
               editMode={this.state.editMode}
               accentColor={this.state.accentColor}
-              projectLabelColor={project.color}
-              name={project.name}
-              setting={this.props.setting}
               key={project._id}
-              projectId={project._id}
+              project={project}
               index={index}
             />
-          )
+          );
         } else {
           return (
             <CategoryLink
               editMode={this.state.editMode}
               accentColor={this.state.accentColor}
-              projectLabelColor={project.color}
               key={project._id}
-              name={project.name}
-              projectId={project._id}
-              setting={this.props.setting}
+              project={project}
+              index={index}
             />
-          )
+          );
         }
       });
     }
@@ -94,9 +87,9 @@ class Projects extends Component {
     const projectName = formValues.addProject;
     // get an array of project names only from the projects array
     const { projects } = this.props.auth;
-    const projectNames = projects.map(project => {
+    const projectNames = projects.map((project) => {
       return project.name;
-    })
+    });
 
     if (projectNames.includes(projectName) || projectName === "Inbox") {
       return alert("You already have a project with this name. Please choose a different name.");
